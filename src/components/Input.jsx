@@ -1,13 +1,22 @@
+import '../styles/Input.css';
+
 export default function Input({ label, type, value, onChange, isRequired }) {
+  const id = label.toLowerCase().replaceAll(' ', '');
+
   return (
-    <label>
-      {label}
-      <input
-        type={type}
-        value={value}
-        onChange={onChange}
-        required={isRequired}
-      />
-    </label>
+    <div id={id + '-form'} className='form-control'>
+      <label>
+        {label}
+        <input
+          id={id}
+          type={type}
+          value={value}
+          onChange={onChange}
+          required={isRequired}
+        />
+      </label>
+    </div>
   );
 }
+
+function autoCompleteValue(type) {}

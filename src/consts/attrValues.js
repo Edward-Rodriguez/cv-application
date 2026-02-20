@@ -1,1 +1,1 @@
-const TEXT = 'text';
+export const TEXT = 'text';
