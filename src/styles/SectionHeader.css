@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.sectionHeader > h1 {
+  font-family: 'Roboto', sans-serif;
+  font-optical-sizing: auto;
+  font-size: 48px;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+}
+
+.custom-divider {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
