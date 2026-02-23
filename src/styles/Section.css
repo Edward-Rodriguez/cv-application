@@ -1,21 +1,33 @@
 section {
-  max-width: 1280px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   padding: 40px;
   gap: 24px;
 }
 
-section .sectionHeader {
-  grid-column: span 2;
-}
-
-#address-form {
-  grid-column: span 2;
-}
-
-#address-form input {
+section input {
   width: 100%;
+}
+
+/* and (max-width: 1199px)  */
+@media (min-width: 700px) {
+  section {
+    max-width: 850px;
+    margin: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  section .sectionHeader {
+    grid-column: span 2;
+  }
+
+  #address-form {
+    grid-column: span 2;
+  }
+
+  #address-form input {
+    width: 100%;
+  }
 }
