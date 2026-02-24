@@ -1,0 +1,31 @@
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+button[type='submit'] {
+  min-width: 300px;
+  background-color: #8070c4;
+  border-radius: 8px;
+  border-style: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  list-style: none;
+  outline: none;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 60px;
+}
+
+button[type='submit']:hover,
+button[type='submit']:focus {
+  background-color: #7260bf;
+}

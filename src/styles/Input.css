@@ -1,19 +1,35 @@
 /* input:required  */
 
 .form-control > label {
-  font-size: 16px;
-  font-weight: 600;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.label-text {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 6px 0px;
 }
 
 .form-control input {
   appearance: none;
   height: 48px;
   border: 1px solid #dbdde1;
-  border-radius: 6px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
   outline: none;
   padding: 8px 16px;
-  font-size: 1.8rem;
+  font-size: 14px;
+}
+
+.error-message {
+  visibility: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 14px;
+  color: #c13838ed;
+  font-size: 1.3rem;
+  /* Lines are broken at newline characters */
+  white-space: pre-line;
+  margin: 4px 0px;
 }

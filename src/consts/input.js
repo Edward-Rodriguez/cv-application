@@ -1,5 +1,10 @@
 export const TEXT = 'text';
 export const FORM_CONTROL = 'form-control';
+export const SUBMIT = 'submit';
+export const NEXT_STEP = 'Next Step';
+export const ERROR = 'error';
+export const HIDDEN = 'hidden';
+export const VISIBLE = 'visible';
 
 //autoComplete values
 export const GIVEN_NAME = 'given-name';

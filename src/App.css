@@ -5,3 +5,7 @@
   padding: 2rem;
   text-align: center;
 }
+
+.error {
+  border: 2px solid #c13838 !important;
+}

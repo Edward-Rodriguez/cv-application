@@ -1,25 +1,30 @@
-section {
+form {
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
   display: grid;
   padding: 40px;
-  gap: 24px;
 }
 
-section input {
+form input {
   width: 100%;
 }
 
+/* section .form-control {
+  width: 100%;
+} */
+
 /* and (max-width: 1199px)  */
 @media (min-width: 700px) {
-  section {
+  form {
     max-width: 850px;
     margin: auto;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    column-gap: 16px;
   }
 
-  section .sectionHeader {
+  form .sectionHeader {
     grid-column: span 2;
   }
 
@@ -29,5 +34,9 @@ section input {
 
   #address-form input {
     width: 100%;
+  }
+
+  .buttonContainer {
+    grid-column: span 2;
   }
 }

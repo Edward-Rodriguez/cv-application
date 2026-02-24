@@ -1,4 +1,5 @@
 import '../styles/Input.css';
+import { ERROR_MESSAGE } from '../consts/errorMessages';
 import {
   FORM_CONTROL,
   GIVEN_NAME,
@@ -17,7 +18,7 @@ export default function Input({ label, type, value, onChange, isRequired }) {
   return (
     <div id={id + '-form'} className={FORM_CONTROL}>
       <label>
-        {label}
+        <span className='label-text'>{label}</span>
         <input
           id={id}
           type={type}
@@ -26,6 +27,7 @@ export default function Input({ label, type, value, onChange, isRequired }) {
           required={isRequired}
           autoComplete={autoCompleteValue(id)}
         />
+        <p className='error-message'>{ERROR_MESSAGE[id]}</p>
       </label>
     </div>
   );
