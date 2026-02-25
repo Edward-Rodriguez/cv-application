@@ -1,15 +1,14 @@
 import SectionHeader from './SectionHeader';
-import SubmitButton from './SubmitButton';
-import '../styles/Section.css';
-import { NEXT_STEP } from '../consts/input';
-import { handleSubmit } from '../utils/validation';
 
-export default function Section({ title, id, children, onSubmit }) {
+import '../styles/Section.css';
+
+export default function Section({ title, id, isActive, children }) {
   return (
-    <form id={id} onSubmit={(e) => handleSubmit(e)}>
-      <SectionHeader title={title} />
-      {children}
-      <SubmitButton name={NEXT_STEP} onSubmit={onSubmit} />
-    </form>
+    <>
+      <section id={id} style={{ display: isActive ? 'grid' : 'none' }}>
+        <SectionHeader title={title} />
+        {children}
+      </section>
+    </>
   );
 }

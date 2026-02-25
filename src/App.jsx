@@ -2,8 +2,19 @@ import { useState } from 'react';
 import './App.css';
 import Section from './components/Section';
 import Input from './components/Input';
+import SubmitButton from './components/SubmitButton';
 import { isValidInput } from './utils/validation';
-import { TEXT, URL, ERROR, HIDDEN, VISIBLE } from './consts/input';
+import {
+  TEXT,
+  URL,
+  ERROR,
+  HIDDEN,
+  VISIBLE,
+  NEXT_STEP,
+  PREVIOUS,
+  BUTTON,
+} from './consts/input';
+
 import {
   FIRST_NAME,
   LAST_NAME,
@@ -15,6 +26,7 @@ import {
   CITY_TOWN,
   LINKEDIN,
   WEBSITE,
+  EDUCATION,
 } from './consts/headings';
 
 function App() {
@@ -30,55 +42,126 @@ function App() {
     website: '',
   });
 
+  // state variable to control which section is displayed, each index represents a section, index is updated on submit button
+  const [activeIndex, setActiveIndex] = useState(0);
+
   function handleOnchange(e) {
-    const key = e.target.id;
-    if (isValidInput(e)) {
-      removeError(e);
-      setProfile({ ...profile, [key]: e.target.value });
+    const input = e.target;
+    if (isValidInput(input)) {
+      removeError(input);
+      setProfile({ ...profile, [input.id]: input.value });
     } else {
-      showError(e);
+      showError(input);
     }
   }
 
-  function showError(e) {
-    e.target.classList.add(ERROR);
-    const errorElement = e.target.parentNode.querySelector('.error-message');
+  function showError(input) {
+    input.classList.add(ERROR);
+    const errorElement = input.parentNode.querySelector('.error-message');
     errorElement.style.visibility = VISIBLE;
   }
 
-  function removeError(e) {
-    e.target.classList.remove(ERROR);
-    const errorElement = e.target.parentNode.querySelector('.error-message');
+  function removeError(input) {
+    input.classList.remove(ERROR);
+    const errorElement = input.parentNode.querySelector('.error-message');
     errorElement.style.visibility = HIDDEN;
   }
 
+  function handleSubmit() {
+    let allFieldsValid = true;
+    Object.keys(profile).forEach((key) => {
+      const inputElem = document.querySelector(`#${key}`);
+      if (!isValidInput(inputElem)) {
+        showError(inputElem);
+        allFieldsValid = false;
+      }
+    });
+    allFieldsValid && setActiveIndex(activeIndex + 1);
+  }
+
+  function handlePrevious(e) {
+    const sectionElem = document.querySelector('section');
+
+    setActiveIndex(activeIndex - 1);
+  }
+
   return (
-    <Section title={PERSONAL_DETAILS} id='personal'>
-      <Input
-        label={FIRST_NAME}
-        type={TEXT}
-        isRequired={true}
-        onChange={handleOnchange}
-      />
-      <Input
-        label={LAST_NAME}
-        type={TEXT}
-        isRequired={true}
-        onChange={handleOnchange}
-      />
-      <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
-      <Input
-        label={EMAIL}
-        type={EMAIL}
-        isRequired={true}
-        onChange={handleOnchange}
-      />
-      <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
-      <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
-      <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
-      <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
-      <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
-    </Section>
+    <>
+      <Section
+        title={PERSONAL_DETAILS}
+        id='personal-details'
+        isActive={activeIndex === 0}>
+        <Input
+          label={FIRST_NAME}
+          type={TEXT}
+          isRequired={true}
+          onChange={handleOnchange}
+        />
+        <Input
+          label={LAST_NAME}
+          type={TEXT}
+          isRequired={true}
+          onChange={handleOnchange}
+        />
+        <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
+        <Input
+          label={EMAIL}
+          type={EMAIL}
+          isRequired={true}
+          onChange={handleOnchange}
+        />
+        <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
+        <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
+        <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
+        <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
+        <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
+        <SubmitButton
+          type={BUTTON}
+          name={NEXT_STEP}
+          onSubmit={() => handleSubmit()}
+        />
+      </Section>
+
+      <Section
+        title={EDUCATION}
+        id='education-details'
+        isActive={activeIndex === 1}>
+        <Input
+          label={FIRST_NAME}
+          type={TEXT}
+          isRequired={true}
+          onChange={handleOnchange}
+        />
+        <Input
+          label={LAST_NAME}
+          type={TEXT}
+          isRequired={true}
+          onChange={handleOnchange}
+        />
+        <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
+        <Input
+          label={EMAIL}
+          type={EMAIL}
+          isRequired={true}
+          onChange={handleOnchange}
+        />
+        <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
+        <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
+        <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
+        <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
+        <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
+        <SubmitButton
+          type={BUTTON}
+          name={NEXT_STEP}
+          onSubmit={() => handleSubmit()}
+        />
+        <SubmitButton
+          type={BUTTON}
+          name={PREVIOUS}
+          onSubmit={() => handlePrevious()}
+        />
+      </Section>
+    </>
   );
 }
 

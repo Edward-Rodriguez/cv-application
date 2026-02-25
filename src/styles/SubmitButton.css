@@ -1,9 +1,9 @@
 .buttonContainer {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 }
 
-button[type='submit'] {
+button[name='next'] {
   min-width: 300px;
   background-color: #8070c4;
   border-radius: 8px;
@@ -25,7 +25,35 @@ button[type='submit'] {
   height: 60px;
 }
 
-button[type='submit']:hover,
-button[type='submit']:focus {
+button[name='next']:hover,
+button[name='next']:focus {
   background-color: #7260bf;
+  text-decoration: underline;
+}
+
+button[name='previous'] {
+  background-color: transparent;
+  border-style: none;
+  color: #afafaf;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  list-style: none;
+  outline: none;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+button[name='previous']:hover,
+button[name='previous']:focus {
+  text-decoration: underline;
+  color: #888888;
+}
+
+button[name='previous']::before {
+  content: '˂';
+  display: inline-block;
+  margin-right: 8px;
 }
