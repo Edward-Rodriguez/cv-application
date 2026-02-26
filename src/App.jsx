@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Section from './components/Section';
 import Input from './components/Input';
+import Fieldset from './components/Fieldset';
 import SubmitButton from './components/SubmitButton';
 import { isValidInput } from './utils/validation';
 import {
@@ -27,6 +27,7 @@ import {
   LINKEDIN,
   WEBSITE,
   EDUCATION,
+  WORK_EXPERIENCE,
 } from './consts/headings';
 
 function App() {
@@ -87,80 +88,111 @@ function App() {
 
   return (
     <>
-      <Section
-        title={PERSONAL_DETAILS}
-        id='personal-details'
-        isActive={activeIndex === 0}>
-        <Input
-          label={FIRST_NAME}
-          type={TEXT}
-          isRequired={true}
-          onChange={handleOnchange}
-        />
-        <Input
-          label={LAST_NAME}
-          type={TEXT}
-          isRequired={true}
-          onChange={handleOnchange}
-        />
-        <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
-        <Input
-          label={EMAIL}
-          type={EMAIL}
-          isRequired={true}
-          onChange={handleOnchange}
-        />
-        <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
-        <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
-        <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
-        <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
-        <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
-        <SubmitButton
-          type={BUTTON}
-          name={NEXT_STEP}
-          onSubmit={() => handleSubmit()}
-        />
-      </Section>
-
-      <Section
-        title={EDUCATION}
-        id='education-details'
-        isActive={activeIndex === 1}>
-        <Input
-          label={FIRST_NAME}
-          type={TEXT}
-          isRequired={true}
-          onChange={handleOnchange}
-        />
-        <Input
-          label={LAST_NAME}
-          type={TEXT}
-          isRequired={true}
-          onChange={handleOnchange}
-        />
-        <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
-        <Input
-          label={EMAIL}
-          type={EMAIL}
-          isRequired={true}
-          onChange={handleOnchange}
-        />
-        <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
-        <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
-        <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
-        <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
-        <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
-        <SubmitButton
-          type={BUTTON}
-          name={NEXT_STEP}
-          onSubmit={() => handleSubmit()}
-        />
-        <SubmitButton
-          type={BUTTON}
-          name={PREVIOUS}
-          onSubmit={() => handlePrevious()}
-        />
-      </Section>
+      <section className='form-section'>
+        <form>
+          {/* <!-- Personal Information --> */}
+          <Fieldset
+            title={PERSONAL_DETAILS}
+            id='personal-details'
+            isActive={activeIndex === 0}>
+            <Input
+              label={FIRST_NAME}
+              type={TEXT}
+              isRequired={true}
+              onChange={handleOnchange}
+            />
+            <Input
+              label={LAST_NAME}
+              type={TEXT}
+              isRequired={true}
+              onChange={handleOnchange}
+            />
+            <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
+            <Input
+              label={EMAIL}
+              type={EMAIL}
+              isRequired={true}
+              onChange={handleOnchange}
+            />
+            <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
+            <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
+            <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
+            <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
+            <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
+            <SubmitButton
+              type={BUTTON}
+              name={NEXT_STEP}
+              onSubmit={() => handleSubmit()}
+            />
+          </Fieldset>
+          {/* <!-- Education --> */}
+          <Fieldset
+            title={EDUCATION}
+            id='education-details'
+            isActive={activeIndex === 1}>
+            <Input
+              label={FIRST_NAME}
+              type={TEXT}
+              isRequired={true}
+              onChange={handleOnchange}
+            />
+            <Input
+              label={LAST_NAME}
+              type={TEXT}
+              isRequired={true}
+              onChange={handleOnchange}
+            />
+            <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
+            <Input
+              label={EMAIL}
+              type={EMAIL}
+              isRequired={true}
+              onChange={handleOnchange}
+            />
+            <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
+            <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
+            <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
+            <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
+            <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
+            <SubmitButton
+              type={BUTTON}
+              name={NEXT_STEP}
+              onSubmit={() => handleSubmit()}
+            />
+            <SubmitButton
+              type={BUTTON}
+              name={PREVIOUS}
+              onSubmit={() => handlePrevious()}
+            />
+          </Fieldset>
+          {/* <form>
+            <Fieldset
+              title={WORK_EXPERIENCE}
+              id='personal-details'
+              isActive={activeIndex === 2}>
+              <Input
+                label={FIRST_NAME}
+                type={TEXT}
+                isRequired={true}
+                onChange={handleOnchange}
+              />
+              <Input
+                label={LAST_NAME}
+                type={TEXT}
+                isRequired={true}
+                onChange={handleOnchange}
+              />
+              <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
+              <Input
+                label={EMAIL}
+                type={EMAIL}
+                isRequired={true}
+                onChange={handleOnchange}
+              />
+            </Fieldset>
+          </form> */}
+        </form>
+      </section>
     </>
   );
 }

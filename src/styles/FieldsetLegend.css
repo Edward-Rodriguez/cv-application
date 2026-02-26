@@ -1,22 +1,17 @@
-.sectionHeader {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.sectionHeader > h1 {
+legend {
   font-family: 'Roboto', sans-serif;
   font-optical-sizing: auto;
-  font-size: 40px;
+  font-size: 24px;
   font-weight: 700;
   font-style: normal;
   font-variation-settings: 'wdth' 100;
-  margin: 12px 0px;
+  margin-bottom: 12px;
+  text-align: left;
 }
 
 .custom-divider {
-  border-top: 4px solid #bbb;
-  border-radius: 5px;
+  border-top: 2px solid #bbb;
+  border-radius: 2px;
   width: 100%;
   height: min-content;
   margin-bottom: 12px;

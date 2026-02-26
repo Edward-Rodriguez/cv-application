@@ -1,34 +1,26 @@
-section {
+fieldset {
   border-radius: 5px;
   box-shadow:
     rgba(0, 0, 0, 0.16) 0px 3px 6px,
     rgba(0, 0, 0, 0.23) 0px 3px 6px;
   display: grid;
   padding: 40px;
+  border: none;
 }
 
-.hidden {
-  display: none;
-}
-
-section input {
+fieldset input {
   width: 100%;
 }
 
-/* section .form-control {
-  width: 100%;
-} */
-
-/* and (max-width: 1199px)  */
 @media (min-width: 700px) {
-  section {
+  fieldset {
     max-width: 850px;
     margin: auto;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 16px;
   }
 
-  section .sectionHeader {
+  fieldset .fieldset-legend {
     grid-column: span 2;
   }
 
