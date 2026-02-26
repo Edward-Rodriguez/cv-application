@@ -1,10 +1,13 @@
 import '../styles/SubmitButton.css';
-import { SUBMIT } from '../consts/input';
+import { INPUT_TYPES } from '../consts/input';
 
 export default function SubmitButton({ name, onSubmit }) {
   return (
     <div className='buttonContainer'>
-      <button type={SUBMIT} name={name.toLowerCase()} onClick={onSubmit}>
+      <button
+        type={INPUT_TYPES.SUBMIT}
+        name={name.toLowerCase().replace(' ', '')}
+        onClick={onSubmit}>
         {name}
       </button>
     </div>

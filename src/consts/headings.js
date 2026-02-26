@@ -1,17 +1,19 @@
-// section headers
-export const PERSONAL_DETAILS = 'Personal Details';
-export const WORK_EXPERIENCE = 'Work Experience';
-export const EDUCATION = 'Education';
-export const OTHER = 'Other';
-export const TEMPLATE = 'Template';
+export const SECTIONS = {
+  PERSONAL_DETAILS: 'Personal Details',
+  WORK_EXPERIENCE: 'Work Experience',
+  EDUCATION: 'Education',
+  OTHER: 'Other',
+  TEMPLATE: 'Template',
+};
 
-// label headings
-export const FIRST_NAME = 'First Name';
-export const LAST_NAME = 'Last Name';
-export const PHONE_NUMBER = 'Phone Number';
-export const EMAIL = 'Email';
-export const ADDRESS = 'Address';
-export const ZIP_CODE = 'Zip Code';
-export const CITY_TOWN = 'City/Town';
-export const LINKEDIN = 'LinkedIn';
-export const WEBSITE = 'Website';
+export const LABELS = {
+  FIRST_NAME: 'First Name',
+  LAST_NAME: 'Last Name',
+  PHONE_NUMBER: 'Phone Number',
+  EMAIL: 'Email',
+  ADDRESS: 'Address',
+  ZIP_CODE: 'Zip Code',
+  CITY_TOWN: 'City/Town',
+  LINKEDIN: 'LinkedIn',
+  WEBSITE: 'Website',
+};

@@ -1,4 +1,10 @@
 /* eslint-disable no-useless-escape */
+import {
+  ERROR_FIRSTNAME_REQUIRED,
+  ERROR_LASTNAME_REQUIRED,
+  ERROR_EMAIL_REQUIRED,
+  REGEX_ERROR_MESSAGE,
+} from '../consts/errorMessages';
 
 const inputRegex = {
   firstname: /^[a-zA-Z]{1,256}$/,
@@ -34,6 +40,18 @@ const handleSubmit = (ev) => {
 //     }
 //   } else return true;
 // };
+
+// function validateProfile(profile) {
+//   const newErrors = {};
+//   !profile['firstname'].trim() &&
+// }
+
+// function isRequiredField(inputField) {
+//   switch (inputField.trim()) {
+//     case 'firstname':
+//       return '';
+//   }
+// }
 
 const isValidInput = (inputElement) => {
   if (inputElement.value && inputElement.id in inputRegex) {

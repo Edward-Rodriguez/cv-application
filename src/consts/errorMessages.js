@@ -1,5 +1,5 @@
 const nameErrorMessaage = 'Use alphabetic characters only';
-export const ERROR_MESSAGE = {
+export const REGEX_ERROR_MESSAGE = {
   firstname: nameErrorMessaage,
   lastname: nameErrorMessaage,
   email: 'Enter in the format: name@example.com',
@@ -7,3 +7,7 @@ export const ERROR_MESSAGE = {
   required: '*Field Required',
   zipcode: 'Enter a valid ZIP code (e.g., 12345 or 12345-6789)',
 };
+
+export const ERROR_FIRSTNAME_REQUIRED = 'First Name Required';
+export const ERROR_LASTNAME_REQUIRED = 'Last Name Required';
+export const ERROR_EMAIL_REQUIRED = 'Email Name Required';

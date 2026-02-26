@@ -5,30 +5,13 @@ import Fieldset from './components/Fieldset';
 import SubmitButton from './components/SubmitButton';
 import { isValidInput } from './utils/validation';
 import {
-  TEXT,
-  URL,
-  ERROR,
-  HIDDEN,
-  VISIBLE,
-  NEXT_STEP,
-  PREVIOUS,
-  BUTTON,
+  INPUT_TYPES,
+  CSS_CLASSES,
+  BUTTON_LABELS,
+  UI_STATES,
+  AUTOCOMPLETE,
 } from './consts/input';
-
-import {
-  FIRST_NAME,
-  LAST_NAME,
-  PERSONAL_DETAILS,
-  PHONE_NUMBER,
-  EMAIL,
-  ADDRESS,
-  ZIP_CODE,
-  CITY_TOWN,
-  LINKEDIN,
-  WEBSITE,
-  EDUCATION,
-  WORK_EXPERIENCE,
-} from './consts/headings';
+import { SECTIONS, LABELS } from './consts/headings';
 
 function App() {
   const [profile, setProfile] = useState({
@@ -45,6 +28,7 @@ function App() {
 
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
   const [activeIndex, setActiveIndex] = useState(0);
+  const [errors, setErrors] = useState({});
 
   function handleOnchange(e) {
     const input = e.target;
@@ -56,16 +40,32 @@ function App() {
     }
   }
 
+  function handleSubmit(e) {
+    const newErrors = {};
+    const input = e.target;
+    if (isValidInput(input)) {
+      removeError(input);
+      setProfile({ ...profile, [input.id]: input.value });
+    } else {
+      showError(input);
+    }
+    setErrors(newErrors);
+  }
+
   function showError(input) {
-    input.classList.add(ERROR);
-    const errorElement = input.parentNode.querySelector('.error-message');
-    errorElement.style.visibility = VISIBLE;
+    input.classList.add(CSS_CLASSES.ERROR);
+    const errorElement = input.parentNode.querySelector(
+      CSS_CLASSES.ERROR_MESSAGE,
+    );
+    errorElement.style.visibility = UI_STATES.VISIBLE;
   }
 
   function removeError(input) {
-    input.classList.remove(ERROR);
-    const errorElement = input.parentNode.querySelector('.error-message');
-    errorElement.style.visibility = HIDDEN;
+    input.classList.remove(CSS_CLASSES.ERROR);
+    const errorElement = input.parentNode.querySelector(
+      CSS_CLASSES.ERROR_MESSAGE,
+    );
+    errorElement.style.visibility = UI_STATES.HIDDEN;
   }
 
   function handleSubmit() {
@@ -90,107 +90,98 @@ function App() {
     <>
       <section className='form-section'>
         <form>
-          {/* <!-- Personal Information --> */}
+          {/* <!------- Personal Information Section -------> */}
           <Fieldset
-            title={PERSONAL_DETAILS}
+            title={SECTIONS.PERSONAL_DETAILS}
             id='personal-details'
             isActive={activeIndex === 0}>
             <Input
-              label={FIRST_NAME}
-              type={TEXT}
+              label={LABELS.FIRST_NAME}
+              type={INPUT_TYPES.TEXT}
               isRequired={true}
               onChange={handleOnchange}
             />
             <Input
-              label={LAST_NAME}
-              type={TEXT}
+              label={LABELS.LAST_NAME}
+              type={INPUT_TYPES.TEXT}
               isRequired={true}
               onChange={handleOnchange}
             />
-            <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
             <Input
-              label={EMAIL}
-              type={EMAIL}
+              label={LABELS.PHONE_NUMBER}
+              type={INPUT_TYPES.TEXT}
+              onChange={handleOnchange}
+            />
+            <Input
+              label={LABELS.EMAIL}
+              type={INPUT_TYPES.EMAIL}
               isRequired={true}
               onChange={handleOnchange}
             />
-            <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
-            <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
-            <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
-            <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
-            <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
+            <Input
+              label={LABELS.ADDRESS}
+              type={INPUT_TYPES.TEXT}
+              onChange={handleOnchange}
+            />
+            <Input
+              label={LABELS.ZIP_CODE}
+              type={INPUT_TYPES.TEXT}
+              onChange={handleOnchange}
+            />
+            <Input
+              label={LABELS.CITY_TOWN}
+              type={INPUT_TYPES.TEXT}
+              onChange={handleOnchange}
+            />
+            <Input
+              label={LABELS.LINKEDIN}
+              type={INPUT_TYPES.URL}
+              onChange={handleOnchange}
+            />
+            <Input
+              label={LABELS.WEBSITE}
+              type={INPUT_TYPES.URL}
+              onChange={handleOnchange}
+            />
             <SubmitButton
-              type={BUTTON}
-              name={NEXT_STEP}
+              type={INPUT_TYPES.BUTTON}
+              name={BUTTON_LABELS.NEXT_STEP}
               onSubmit={() => handleSubmit()}
             />
           </Fieldset>
           {/* <!-- Education --> */}
           <Fieldset
-            title={EDUCATION}
+            title={SECTIONS.EDUCATION}
             id='education-details'
             isActive={activeIndex === 1}>
             <Input
-              label={FIRST_NAME}
-              type={TEXT}
+              label={LABELS.FIRST_NAME}
+              type={INPUT_TYPES.TEXT}
               isRequired={true}
               onChange={handleOnchange}
             />
             <Input
-              label={LAST_NAME}
-              type={TEXT}
+              label={LABELS.LAST_NAME}
+              type={INPUT_TYPES.TEXT}
               isRequired={true}
               onChange={handleOnchange}
             />
-            <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
             <Input
-              label={EMAIL}
-              type={EMAIL}
-              isRequired={true}
+              label={LABELS.PHONE_NUMBER}
+              type={INPUT_TYPES.TEXT}
               onChange={handleOnchange}
             />
-            <Input label={ADDRESS} type={TEXT} onChange={handleOnchange} />
-            <Input label={ZIP_CODE} type={TEXT} onChange={handleOnchange} />
-            <Input label={CITY_TOWN} type={TEXT} onChange={handleOnchange} />
-            <Input label={LINKEDIN} type={URL} onChange={handleOnchange} />
-            <Input label={WEBSITE} type={URL} onChange={handleOnchange} />
             <SubmitButton
-              type={BUTTON}
-              name={NEXT_STEP}
+              type={INPUT_TYPES.BUTTON}
+              name={BUTTON_LABELS.NEXT_STEP}
               onSubmit={() => handleSubmit()}
             />
             <SubmitButton
-              type={BUTTON}
-              name={PREVIOUS}
+              type={INPUT_TYPES.BUTTON}
+              name={BUTTON_LABELS.PREVIOUS}
               onSubmit={() => handlePrevious()}
             />
           </Fieldset>
-          {/* <form>
-            <Fieldset
-              title={WORK_EXPERIENCE}
-              id='personal-details'
-              isActive={activeIndex === 2}>
-              <Input
-                label={FIRST_NAME}
-                type={TEXT}
-                isRequired={true}
-                onChange={handleOnchange}
-              />
-              <Input
-                label={LAST_NAME}
-                type={TEXT}
-                isRequired={true}
-                onChange={handleOnchange}
-              />
-              <Input label={PHONE_NUMBER} type={TEXT} onChange={handleOnchange} />
-              <Input
-                label={EMAIL}
-                type={EMAIL}
-                isRequired={true}
-                onChange={handleOnchange}
-              />
-            </Fieldset>
-          </form> */}
         </form>
       </section>
     </>

@@ -3,7 +3,7 @@
   place-items: center;
 }
 
-button[name='next'] {
+button[name='nextstep'] {
   min-width: 300px;
   background-color: #8070c4;
   border-radius: 8px;
@@ -25,8 +25,8 @@ button[name='next'] {
   height: 60px;
 }
 
-button[name='next']:hover,
-button[name='next']:focus {
+button[name='nextstep']:hover,
+button[name='nextstep']:focus {
   background-color: #7260bf;
   text-decoration: underline;
 }
