@@ -7,7 +7,7 @@ export default function SubmitButton({ name, onSubmit }) {
       <button
         type={INPUT_TYPES.SUBMIT}
         name={name.toLowerCase().replace(' ', '')}
-        onClick={onSubmit}>
+        onClick={(e) => onSubmit(e)}>
         {name}
       </button>
     </div>

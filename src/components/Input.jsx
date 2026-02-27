@@ -17,13 +17,15 @@ export default function Input({
         <span className='label-text'>{label}</span>
         <input
           id={id}
+          name={id}
           type={type}
           value={value}
-          onChange={onChange}
+          onChange={(e) => onChange(e)}
           required={isRequired}
           autoComplete={autoCompleteValue(id)}
+          className={error && CSS_CLASSES.ERROR}
         />
-        <p className='error-message'>{error}</p>
+        <p className={CSS_CLASSES.ERROR_MESSAGE}>{error}</p>
       </label>
     </div>
   );

@@ -1,10 +1,9 @@
 /* eslint-disable no-useless-escape */
 import {
-  ERROR_FIRSTNAME_REQUIRED,
-  ERROR_LASTNAME_REQUIRED,
-  ERROR_EMAIL_REQUIRED,
+  ERROR_REQUIRED_FIELDS,
   REGEX_ERROR_MESSAGE,
 } from '../consts/errorMessages';
+import { USER_FIELDS } from '../consts/input';
 
 const inputRegex = {
   firstname: /^[a-zA-Z]{1,256}$/,
@@ -14,48 +13,29 @@ const inputRegex = {
   phonenumber: /^(\(\d{3}\)|\d{3})[ .-]?\d{3}[ .-]?\d{4}$/,
 };
 
-//list of inputs to exclude from validation check
-const noValidationList = ['address', 'citytown', 'linkedin', 'website'];
+//list of inputs required
+const requiredFields = [
+  USER_FIELDS.FIRST_NAME,
+  USER_FIELDS.LAST_NAME,
+  USER_FIELDS.EMAIL,
+];
 
-const handleSubmit = (ev) => {
-  ev.preventDefault();
-  const inputs = Array.from(document.querySelectorAll('input')).filter(
-    (item) => !noValidationList.includes(item.id),
-  );
-  inputs.forEach((inputField) => {
-    if (isValidInput(inputField, inputRegex[inputField.id])) {
-      console.log(inputField.id + ' is Valid!');
-    } else {
-      console.log(inputField.id + ' NOT Valid!');
+function validateProfile(profile) {
+  const newErrors = {};
+
+  Object.keys(profile).forEach((input) => {
+    if (!profile[input] && requiredFields.includes(input)) {
+      newErrors[input] = ERROR_REQUIRED_FIELDS[input];
+    } else if (!isValidInput(input, profile)) {
+      newErrors[input] = REGEX_ERROR_MESSAGE[input];
     }
   });
-};
+  return newErrors;
+}
 
-// const isValidInput = (ev) => {
-//   if (ev.target.value && ev.target.id in inputRegex) {
-//     if (inputRegex[ev.target.id].test(ev.target.value)) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   } else return true;
-// };
-
-// function validateProfile(profile) {
-//   const newErrors = {};
-//   !profile['firstname'].trim() &&
-// }
-
-// function isRequiredField(inputField) {
-//   switch (inputField.trim()) {
-//     case 'firstname':
-//       return '';
-//   }
-// }
-
-const isValidInput = (inputElement) => {
-  if (inputElement.value && inputElement.id in inputRegex) {
-    if (inputRegex[inputElement.id].test(inputElement.value)) {
+const isValidInput = (input, profile) => {
+  if (profile[input] && input in inputRegex) {
+    if (inputRegex[input].test(profile[input])) {
       return true;
     } else {
       return false;
@@ -63,4 +43,4 @@ const isValidInput = (inputElement) => {
   } else return true;
 };
 
-export { handleSubmit, isValidInput };
+export { validateProfile };

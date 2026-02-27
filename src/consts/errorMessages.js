@@ -8,6 +8,8 @@ export const REGEX_ERROR_MESSAGE = {
   zipcode: 'Enter a valid ZIP code (e.g., 12345 or 12345-6789)',
 };
 
-export const ERROR_FIRSTNAME_REQUIRED = 'First Name Required';
-export const ERROR_LASTNAME_REQUIRED = 'Last Name Required';
-export const ERROR_EMAIL_REQUIRED = 'Email Name Required';
+export const ERROR_REQUIRED_FIELDS = {
+  firstname: 'First Name Required',
+  lastname: 'Last Name Required',
+  email: 'Email Name Required',
+};

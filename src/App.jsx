@@ -3,15 +3,10 @@ import './App.css';
 import Input from './components/Input';
 import Fieldset from './components/Fieldset';
 import SubmitButton from './components/SubmitButton';
-import { isValidInput } from './utils/validation';
-import {
-  INPUT_TYPES,
-  CSS_CLASSES,
-  BUTTON_LABELS,
-  UI_STATES,
-  AUTOCOMPLETE,
-} from './consts/input';
+import PersonalDetails from './components/PersonalDetails';
+import { validateProfile } from './utils/validation';
 import { SECTIONS, LABELS } from './consts/headings';
+import { INPUT_TYPES, BUTTON_LABELS } from './consts/input';
 
 function App() {
   const [profile, setProfile] = useState({
@@ -29,61 +24,38 @@ function App() {
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
   const [activeIndex, setActiveIndex] = useState(0);
   const [errors, setErrors] = useState({});
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
-  function handleOnchange(e) {
+  function handleOnChange(e) {
     const input = e.target;
-    if (isValidInput(input)) {
-      removeError(input);
-      setProfile({ ...profile, [input.id]: input.value });
-    } else {
-      showError(input);
+    const updatedProfile = { ...profile, [input.id]: input.value };
+    setProfile(updatedProfile);
+    if (attemptedSubmit) {
+      const newErrors = validateProfile(updatedProfile);
+      setErrors(newErrors);
     }
   }
 
   function handleSubmit(e) {
-    const newErrors = {};
-    const input = e.target;
-    if (isValidInput(input)) {
-      removeError(input);
-      setProfile({ ...profile, [input.id]: input.value });
+    e.preventDefault();
+    /**pending**/
+  }
+
+  function handleNextStep(e) {
+    e.preventDefault();
+    const newErrors = validateProfile(profile);
+    if (Object.keys(newErrors).length === 0) {
+      setActiveIndex(activeIndex + 1);
     } else {
-      showError(input);
+      setErrors(newErrors);
     }
-    setErrors(newErrors);
-  }
-
-  function showError(input) {
-    input.classList.add(CSS_CLASSES.ERROR);
-    const errorElement = input.parentNode.querySelector(
-      CSS_CLASSES.ERROR_MESSAGE,
-    );
-    errorElement.style.visibility = UI_STATES.VISIBLE;
-  }
-
-  function removeError(input) {
-    input.classList.remove(CSS_CLASSES.ERROR);
-    const errorElement = input.parentNode.querySelector(
-      CSS_CLASSES.ERROR_MESSAGE,
-    );
-    errorElement.style.visibility = UI_STATES.HIDDEN;
-  }
-
-  function handleSubmit() {
-    let allFieldsValid = true;
-    Object.keys(profile).forEach((key) => {
-      const inputElem = document.querySelector(`#${key}`);
-      if (!isValidInput(inputElem)) {
-        showError(inputElem);
-        allFieldsValid = false;
-      }
-    });
-    allFieldsValid && setActiveIndex(activeIndex + 1);
+    setAttemptedSubmit(true);
   }
 
   function handlePrevious(e) {
-    const sectionElem = document.querySelector('section');
-
+    e.preventDefault();
     setActiveIndex(activeIndex - 1);
+    setAttemptedSubmit(false);
   }
 
   return (
@@ -91,95 +63,33 @@ function App() {
       <section className='form-section'>
         <form>
           {/* <!------- Personal Information Section -------> */}
-          <Fieldset
+          <PersonalDetails
             title={SECTIONS.PERSONAL_DETAILS}
             id='personal-details'
-            isActive={activeIndex === 0}>
-            <Input
-              label={LABELS.FIRST_NAME}
-              type={INPUT_TYPES.TEXT}
-              isRequired={true}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.LAST_NAME}
-              type={INPUT_TYPES.TEXT}
-              isRequired={true}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.PHONE_NUMBER}
-              type={INPUT_TYPES.TEXT}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.EMAIL}
-              type={INPUT_TYPES.EMAIL}
-              isRequired={true}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.ADDRESS}
-              type={INPUT_TYPES.TEXT}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.ZIP_CODE}
-              type={INPUT_TYPES.TEXT}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.CITY_TOWN}
-              type={INPUT_TYPES.TEXT}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.LINKEDIN}
-              type={INPUT_TYPES.URL}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.WEBSITE}
-              type={INPUT_TYPES.URL}
-              onChange={handleOnchange}
-            />
-            <SubmitButton
-              type={INPUT_TYPES.BUTTON}
-              name={BUTTON_LABELS.NEXT_STEP}
-              onSubmit={() => handleSubmit()}
-            />
-          </Fieldset>
-          {/* <!-- Education --> */}
+            isActive={activeIndex === 0}
+            onChange={handleOnChange}
+            onSubmit={handleNextStep}
+            errors={errors}
+          />
+          {/* <!-- Education Section --> */}
           <Fieldset
             title={SECTIONS.EDUCATION}
             id='education-details'
             isActive={activeIndex === 1}>
             <Input
-              label={LABELS.FIRST_NAME}
-              type={INPUT_TYPES.TEXT}
-              isRequired={true}
-              onChange={handleOnchange}
-            />
-            <Input
-              label={LABELS.LAST_NAME}
-              type={INPUT_TYPES.TEXT}
-              isRequired={true}
-              onChange={handleOnchange}
-            />
-            <Input
               label={LABELS.PHONE_NUMBER}
               type={INPUT_TYPES.TEXT}
-              onChange={handleOnchange}
+              onChange={handleOnChange}
             />
             <SubmitButton
               type={INPUT_TYPES.BUTTON}
               name={BUTTON_LABELS.NEXT_STEP}
-              onSubmit={() => handleSubmit()}
+              onSubmit={handleSubmit}
             />
             <SubmitButton
               type={INPUT_TYPES.BUTTON}
               name={BUTTON_LABELS.PREVIOUS}
-              onSubmit={() => handlePrevious()}
+              onSubmit={handlePrevious}
             />
           </Fieldset>
         </form>

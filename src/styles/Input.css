@@ -24,7 +24,6 @@
 }
 
 .error-message {
-  visibility: hidden;
   font-family: Arial, Helvetica, sans-serif;
   height: 14px;
   color: #c13838ed;
@@ -32,4 +31,8 @@
   /* Lines are broken at newline characters */
   white-space: pre-line;
   margin: 4px 0px;
+}
+
+.error {
+  border: 2px solid #c13838 !important;
 }
