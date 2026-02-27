@@ -16,4 +16,9 @@ export const LABELS = {
   CITY_TOWN: 'City/Town',
   LINKEDIN: 'LinkedIn',
   WEBSITE: 'Website',
+  DEGREE: 'Degree',
+  SCHOOL: 'School',
+  GRADUATION_DATE: 'Start Date',
+  CITY_STATE: 'City, State',
+  ACHIEVEMENTS: 'Academic Achievements',
 };

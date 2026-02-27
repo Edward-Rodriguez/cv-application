@@ -15,6 +15,7 @@ export const INPUT_TYPES = {
   SUBMIT: 'submit',
   BUTTON: 'button',
   URL: 'url',
+  MONTH: 'month',
 };
 
 export const BUTTON_LABELS = {

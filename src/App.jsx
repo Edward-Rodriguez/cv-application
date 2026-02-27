@@ -4,6 +4,7 @@ import Input from './components/Input';
 import Fieldset from './components/Fieldset';
 import SubmitButton from './components/SubmitButton';
 import PersonalDetails from './components/PersonalDetails';
+import Education from './components/Education';
 import { validateProfile } from './utils/validation';
 import { SECTIONS, LABELS } from './consts/headings';
 import { INPUT_TYPES, BUTTON_LABELS } from './consts/input';
@@ -19,6 +20,7 @@ function App() {
     citytown: '',
     linkedin: '',
     website: '',
+    education: [],
   });
 
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
@@ -65,33 +67,21 @@ function App() {
           {/* <!------- Personal Information Section -------> */}
           <PersonalDetails
             title={SECTIONS.PERSONAL_DETAILS}
-            id='personal-details'
+            id={SECTIONS.PERSONAL_DETAILS.toLowerCase().replace(' ', '-')}
             isActive={activeIndex === 0}
             onChange={handleOnChange}
             onSubmit={handleNextStep}
             errors={errors}
           />
           {/* <!-- Education Section --> */}
-          <Fieldset
+          <Education
             title={SECTIONS.EDUCATION}
-            id='education-details'
-            isActive={activeIndex === 1}>
-            <Input
-              label={LABELS.PHONE_NUMBER}
-              type={INPUT_TYPES.TEXT}
-              onChange={handleOnChange}
-            />
-            <SubmitButton
-              type={INPUT_TYPES.BUTTON}
-              name={BUTTON_LABELS.NEXT_STEP}
-              onSubmit={handleSubmit}
-            />
-            <SubmitButton
-              type={INPUT_TYPES.BUTTON}
-              name={BUTTON_LABELS.PREVIOUS}
-              onSubmit={handlePrevious}
-            />
-          </Fieldset>
+            id={SECTIONS.EDUCATION.toLowerCase()}
+            isActive={activeIndex === 1}
+            onChange={handleOnChange}
+            onSubmit={handleNextStep}
+            onPrevious={handlePrevious}
+            errors={errors}></Education>
         </form>
       </section>
     </>
