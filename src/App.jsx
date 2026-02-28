@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import './App.css';
-import Input from './components/Input';
-import Fieldset from './components/Fieldset';
-import SubmitButton from './components/SubmitButton';
 import PersonalDetails from './components/PersonalDetails';
 import Education from './components/Education';
-import { validateProfile } from './utils/validation';
-import { SECTIONS, LABELS } from './consts/headings';
-import { INPUT_TYPES, BUTTON_LABELS } from './consts/input';
+import { validateProfile, normalizeString } from './utils/validation';
+import { SECTIONS } from './consts/headings';
+import { CSS_CLASSES } from './consts/input';
 
 function App() {
   const [profile, setProfile] = useState({
@@ -62,12 +59,12 @@ function App() {
 
   return (
     <>
-      <section className='form-section'>
+      <section className={CSS_CLASSES.FORM_SECTION}>
         <form>
           {/* <!------- Personal Information Section -------> */}
           <PersonalDetails
             title={SECTIONS.PERSONAL_DETAILS}
-            id={SECTIONS.PERSONAL_DETAILS.toLowerCase().replace(' ', '-')}
+            id={normalizeString(SECTIONS.PERSONAL_DETAILS)}
             isActive={activeIndex === 0}
             onChange={handleOnChange}
             onSubmit={handleNextStep}
@@ -76,7 +73,7 @@ function App() {
           {/* <!-- Education Section --> */}
           <Education
             title={SECTIONS.EDUCATION}
-            id={SECTIONS.EDUCATION.toLowerCase()}
+            id={normalizeString(SECTIONS.EDUCATION, '')}
             isActive={activeIndex === 1}
             onChange={handleOnChange}
             onSubmit={handleNextStep}

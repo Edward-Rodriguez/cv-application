@@ -27,12 +27,22 @@ export const CSS_CLASSES = {
   FORM_CONTROL: 'form-control',
   ERROR: 'error',
   ERROR_MESSAGE: 'error-message',
+  LABEL_TEXT: 'label-text',
+  BUTTON_CONTAINER: 'buttonContainer',
+  LEGEND: 'fieldset-legend',
+  CUSTOM_DIVIDER: 'custom-divider',
+  FORM_SECTION: 'form-section',
 };
 
 export const UI_STATES = {
   ERROR: 'error',
   HIDDEN: 'hidden',
   VISIBLE: 'visible',
+};
+
+export const DISPLAY = {
+  NONE: 'none',
+  GRID: 'grid',
 };
 
 //autoComplete values

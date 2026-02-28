@@ -1,10 +1,11 @@
 import '../styles/FieldsetLegend.css';
+import { CSS_CLASSES } from '../consts/input';
 
 export default function FieldsetLegend({ title }) {
   return (
-    <div className='fieldset-legend'>
+    <div className={CSS_CLASSES.LEGEND}>
       <legend>{title}</legend>
-      <hr className='custom-divider' />
+      <hr className={CSS_CLASSES.CUSTOM_DIVIDER} />
     </div>
   );
 }

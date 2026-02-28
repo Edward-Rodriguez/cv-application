@@ -1,4 +1,5 @@
 const nameErrorMessaage = 'Use alphabetic characters only';
+
 export const REGEX_ERROR_MESSAGE = {
   firstname: nameErrorMessaage,
   lastname: nameErrorMessaage,

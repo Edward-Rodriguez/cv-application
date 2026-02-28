@@ -1,5 +1,5 @@
 import '../styles/Input.css';
-import { CSS_CLASSES, AUTOCOMPLETE } from '../consts/input';
+import { CSS_CLASSES, AUTOCOMPLETE, USER_FIELDS } from '../consts/input';
 import { normalizeString } from '../utils/validation';
 
 export default function Input({
@@ -10,13 +10,12 @@ export default function Input({
   isRequired,
   error,
 }) {
-  // const id = label.toLowerCase().replace(/[ \/]/g, '');
   const id = normalizeString(label, '');
 
   return (
     <div id={id + '-form'} className={CSS_CLASSES.FORM_CONTROL}>
       <label>
-        <span className='label-text'>{label}</span>
+        <span className={CSS_CLASSES.LABEL_TEXT}>{label}</span>
         <input
           id={id}
           name={id}
@@ -35,23 +34,23 @@ export default function Input({
 
 function autoCompleteValue(id) {
   switch (id) {
-    case 'firstname':
+    case USER_FIELDS.FIRST_NAME:
       return AUTOCOMPLETE.GIVEN_NAME;
-    case 'lastname':
+    case USER_FIELDS.LAST_NAME:
       return AUTOCOMPLETE.FAMILY_NAME;
-    case 'phonenumber':
+    case USER_FIELDS.PHONE_NUMBER:
       return AUTOCOMPLETE.TELEPHONE_NUMBER;
-    case 'email':
+    case USER_FIELDS.EMAIL:
       return AUTOCOMPLETE.EMAIL_ADDRESS;
-    case 'address':
+    case USER_FIELDS.ADDRESS:
       return AUTOCOMPLETE.STREET_ADDRESS;
-    case 'zipcode':
+    case USER_FIELDS.ZIP_CODE:
       return AUTOCOMPLETE.POSTAL_CODE;
-    case 'citytown':
+    case USER_FIELDS.CITY_TOWN:
       return AUTOCOMPLETE.CITY;
-    case 'linkedin':
+    case USER_FIELDS.LINKEDIN:
       return AUTOCOMPLETE.URL;
-    case 'WEBSITE':
+    case USER_FIELDS.WEBSITE:
       return AUTOCOMPLETE.URL;
     default:
       return null;
