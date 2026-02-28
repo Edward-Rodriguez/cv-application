@@ -21,6 +21,15 @@ const requiredFields = [
   USER_FIELDS.EMAIL,
 ];
 
+/**
+ * Converts to lowercase
+ * Trims leading/trailing whitespace
+ * Replaces all special characters with a given character
+ * */
+function normalizeString(str, replacement = '-') {
+  return str.toLowerCase().replace(/[^a-zA-Z0-9]/g, replacement);
+}
+
 function validateProfile(profile) {
   const newErrors = {};
 
@@ -44,4 +53,4 @@ const isValidInput = (input, profile) => {
   } else return true;
 };
 
-export { validateProfile };
+export { validateProfile, normalizeString };

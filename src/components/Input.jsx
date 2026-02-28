@@ -1,5 +1,6 @@
 import '../styles/Input.css';
 import { CSS_CLASSES, AUTOCOMPLETE } from '../consts/input';
+import { normalizeString } from '../utils/validation';
 
 export default function Input({
   label,
@@ -9,7 +10,8 @@ export default function Input({
   isRequired,
   error,
 }) {
-  const id = label.toLowerCase().replace(/[ \/]/g, '');
+  // const id = label.toLowerCase().replace(/[ \/]/g, '');
+  const id = normalizeString(label, '');
 
   return (
     <div id={id + '-form'} className={CSS_CLASSES.FORM_CONTROL}>

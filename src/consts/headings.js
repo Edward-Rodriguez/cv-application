@@ -18,7 +18,7 @@ export const LABELS = {
   WEBSITE: 'Website',
   DEGREE: 'Degree',
   SCHOOL: 'School',
-  GRADUATION_DATE: 'Start Date',
+  GRADUATION_DATE: 'Graduation Date',
   CITY_STATE: 'City, State',
   ACHIEVEMENTS: 'Academic Achievements',
 };
