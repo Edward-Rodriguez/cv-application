@@ -8,6 +8,7 @@ export const USER_FIELDS = {
   CITY_TOWN: 'citytown',
   LINKEDIN: 'linkedin',
   WEBSITE: 'website',
+  EDUCATION: 'education',
 };
 
 export const INPUT_TYPES = {

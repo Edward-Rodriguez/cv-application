@@ -11,7 +11,6 @@ const inputRegex = {
   zipcode: /^\d{5}(-\d{4})?$/,
   email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
   phonenumber: /^(\(\d{3}\)|\d{3})[ .-]?\d{3}[ .-]?\d{4}$/,
-  degree: /^[A-Za-z0-9\s.'-,]{2,100}$/,
 };
 
 //list of inputs required

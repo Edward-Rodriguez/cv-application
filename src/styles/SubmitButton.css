@@ -4,6 +4,7 @@
 }
 
 button[name='nextstep'] {
+  margin-top: 28px;
   min-width: 300px;
   background-color: #8070c4;
   border-radius: 8px;

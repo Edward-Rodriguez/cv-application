@@ -24,7 +24,8 @@ fieldset input {
     grid-column: span 2;
   }
 
-  #address-form {
+  #address-form,
+  #academicachievements-form {
     grid-column: span 2;
   }
 

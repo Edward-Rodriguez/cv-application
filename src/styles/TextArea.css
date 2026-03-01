@@ -1,10 +1,11 @@
 textarea {
+  width: 100%;
   appearance: none;
-  height: 48px;
   border: 1px solid #dbdde1;
   background-color: #f3f4f6;
   border-radius: 12px;
   outline: none;
   padding: 8px 16px;
   font-size: 14px;
+  resize: none;
 }
