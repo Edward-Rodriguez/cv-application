@@ -37,29 +37,37 @@ function App() {
   }
 
   /**
-   * Map the designated profile property that has an array,
+   * Map the designated profile key that has an array,
    * Update the object at the given index with new value
    */
   function updateProfileArray(
-    profileKey,
+    profileSectionKey,
     fieldToUpdate,
     newValue,
     indexToUpdate,
   ) {
-    return profile[profileKey].map((edu, index) =>
-      index === indexToUpdate ? { ...edu, [fieldToUpdate]: newValue } : edu,
+    return profile[profileSectionKey].map((sectionItem, itemIndex) =>
+      itemIndex === indexToUpdate
+        ? { ...sectionItem, [fieldToUpdate]: newValue }
+        : sectionItem,
     );
   }
 
-  function handleProfileArrayChange(e, section, sectionIndex) {
+  /**
+   * used to update profile properties that contain an array of objects
+   * Ex: education, workexperience properties
+   * category: profile key that is being updated, Ex: education
+   * entryIndex: index of object in the array to be updated
+   */
+  function handleProfileArrayChange(e, category, entryIndex) {
     const input = e.target;
     const updatedProfile = {
       ...profile,
-      [section]: updateProfileArray(
-        section,
+      [category]: updateProfileArray(
+        category,
         input.id,
         input.value,
-        sectionIndex,
+        entryIndex,
       ),
     };
     setProfile(updatedProfile);
