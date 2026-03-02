@@ -1,0 +1,4 @@
+#employer-form,
+#description-form {
+  grid-column: span 2;
+}

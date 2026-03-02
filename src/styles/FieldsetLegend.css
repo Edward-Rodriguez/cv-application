@@ -10,9 +10,10 @@ legend {
 }
 
 .custom-divider {
-  border-top: 2px solid #bbb;
+  border-top: 1px solid #ddd;
   border-radius: 2px;
   width: 100%;
   height: min-content;
   margin-bottom: 12px;
+  grid-column: span 2;
 }

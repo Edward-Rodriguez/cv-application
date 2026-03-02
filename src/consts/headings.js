@@ -21,4 +21,9 @@ export const LABELS = {
   GRADUATION_DATE: 'Graduation Date',
   CITY_STATE: 'City, State',
   ACHIEVEMENTS: 'Academic Achievements',
+  JOB_TITLE: 'Job Title',
+  EMPLOYER: 'Employer',
+  START_DATE: 'Start Date',
+  END_DATE: 'End Date',
+  DESCRIPTION: 'Description',
 };

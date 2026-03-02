@@ -9,6 +9,9 @@ export const USER_FIELDS = {
   LINKEDIN: 'linkedin',
   WEBSITE: 'website',
   EDUCATION: 'education',
+  WORK_EXPERIENCE: 'workexperience',
+  // JOB_TITLE:'jobtitle',
+  // EMPLOYER:'employer',
 };
 
 export const INPUT_TYPES = {
@@ -33,6 +36,9 @@ export const CSS_CLASSES = {
   LEGEND: 'fieldset-legend',
   CUSTOM_DIVIDER: 'custom-divider',
   FORM_SECTION: 'form-section',
+  EDU_PREVIEW: 'education-preview',
+  EDU_PREVIEW_BTN: 'edu-preview-btn',
+  EDU_PREVIEW_SCHOOL: 'edu-preview-school',
 };
 
 export const UI_STATES = {

@@ -2,35 +2,25 @@ import Fieldset from './Fieldset';
 import Input from './Input';
 import SubmitButton from './SubmitButton';
 import TextArea from './TextArea';
-// import EducationPreview from './EducationPreview';
 import { LABELS } from '../consts/headings';
-import { USER_FIELDS, INPUT_TYPES, BUTTON_LABELS } from '../consts/input';
+import { INPUT_TYPES, BUTTON_LABELS } from '../consts/input';
+import '../styles/WorkExperience.css';
 
-export default function Education({
+export default function WorkExperience({
   title,
   id,
   isActive,
   onChange,
   onSubmit,
   onPrevious,
-  errors,
 }) {
   return (
     <>
       <Fieldset title={title} id={id} isActive={isActive}>
-        {/* <EducationPreview
-          education={{
-            citystate: 'South Redford Dr., NY',
-            degree: 'B.A. Computer Science',
-            graduationdate: '2026-04',
-            school: 'NYU University',
-          }}
-        /> */}
         <Input
-          label={LABELS.DEGREE}
+          label={LABELS.JOB_TITLE}
           type={INPUT_TYPES.TEXT}
           onChange={onChange}
-          error={errors && errors[USER_FIELDS.DEGREE]}
         />
         <Input
           label={LABELS.CITY_STATE}
@@ -38,17 +28,22 @@ export default function Education({
           onChange={onChange}
         />
         <Input
-          label={LABELS.SCHOOL}
+          label={LABELS.EMPLOYER}
           type={INPUT_TYPES.TEXT}
           onChange={onChange}
         />
         <Input
-          label={LABELS.GRADUATION_DATE}
+          label={LABELS.START_DATE}
+          type={INPUT_TYPES.MONTH}
+          onChange={onChange}
+        />
+        <Input
+          label={LABELS.END_DATE}
           type={INPUT_TYPES.MONTH}
           onChange={onChange}
         />
         <TextArea
-          label={LABELS.ACHIEVEMENTS}
+          label={LABELS.DESCRIPTION}
           rows={5}
           cols={30}
           onChange={onChange}

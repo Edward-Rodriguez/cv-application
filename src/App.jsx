@@ -5,6 +5,7 @@ import Education from './components/Education';
 import { validateProfile, normalizeString } from './utils/validation';
 import { SECTIONS } from './consts/headings';
 import { CSS_CLASSES, USER_FIELDS } from './consts/input';
+import WorkExperience from './components/WorkExperience';
 
 function App() {
   const [profile, setProfile] = useState({
@@ -18,6 +19,7 @@ function App() {
     linkedin: '',
     website: '',
     education: [{}],
+    workexperience: [{}],
   });
 
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
@@ -25,6 +27,7 @@ function App() {
   const [errors, setErrors] = useState({});
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [activeEducationIndex, setActiveEdcationIndex] = useState(0);
+  const [activeWorkExpIndex, setactiveWorkExpIndex] = useState(0);
 
   function handleOnChange(e) {
     const input = e.target;
@@ -118,6 +121,21 @@ function App() {
             onSubmit={handleNextStep}
             onPrevious={handlePrevious}
             errors={errors}
+          />
+          {/* <!------- Work Experience Section -------> */}
+          <WorkExperience
+            title={SECTIONS.WORK_EXPERIENCE}
+            id={normalizeString(SECTIONS.WORK_EXPERIENCE, '')}
+            isActive={activeIndex === 2}
+            onChange={(e) =>
+              handleProfileArrayChange(
+                e,
+                USER_FIELDS.WORK_EXPERIENCE,
+                activeWorkExpIndex,
+              )
+            }
+            onSubmit={handleNextStep}
+            onPrevious={handlePrevious}
           />
         </form>
       </section>
