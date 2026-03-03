@@ -6,6 +6,7 @@ import { validateProfile, normalizeString } from './utils/validation';
 import { SECTIONS } from './consts/headings';
 import { CSS_CLASSES, USER_FIELDS } from './consts/input';
 import WorkExperience from './components/WorkExperience';
+import Template from './components/Template';
 
 function App() {
   const [profile, setProfile] = useState({
@@ -141,6 +142,9 @@ function App() {
             onPrevious={handlePrevious}
           />
         </form>
+      </section>
+      <section className={CSS_CLASSES.TEMPLATE}>
+        <Template profile={profile} isActive={activeIndex === 3} />
       </section>
     </>
   );

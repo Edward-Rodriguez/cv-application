@@ -26,4 +26,6 @@ export const LABELS = {
   START_DATE: 'Start Date',
   END_DATE: 'End Date',
   DESCRIPTION: 'Description',
+  PERSONAL: 'Personal',
+  NAME: 'Name',
 };

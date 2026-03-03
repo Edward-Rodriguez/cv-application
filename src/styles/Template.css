@@ -1,0 +1,28 @@
+.template-container {
+  max-width: 850px;
+  border-radius: 5px;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  display: grid;
+  border: none;
+  margin: auto;
+}
+
+.template-header {
+  width: 100%;
+  background-color: rgb(63, 101, 146);
+  color: aliceblue;
+  font-size: 48px;
+  text-align: left;
+  padding: 16px;
+}
+
+#template-personal .template-section {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.template-section {
+  padding: 24px;
+}

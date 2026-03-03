@@ -1,0 +1,31 @@
+.template-section-hdr {
+  display: flex;
+  justify-items: flex-start;
+  align-items: center;
+  background-color: #eee;
+  font-size: 20px;
+  gap: 12px;
+  padding: 8px;
+}
+
+.template-icon {
+  height: 20px;
+}
+
+.template-icon img {
+  height: 20px;
+  width: auto;
+}
+
+.template-section-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  justify-items: flex-start;
+  font-size: 16px;
+  row-gap: 12px;
+  padding-top: 12px;
+}
+
+.template-section-content div:nth-child(2n) {
+  font-weight: 700;
+}

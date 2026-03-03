@@ -10,7 +10,10 @@ export default function EducationPreview({
 }) {
   return (
     <>
-      <button className={CSS_CLASSES.EDU_PREVIEW_BTN} onClick={onClick}>
+      <button
+        className={CSS_CLASSES.EDU_PREVIEW_BTN}
+        onClick={onClick}
+        data-id={id}>
         <div className={CSS_CLASSES.EDU_PREVIEW}>
           <div className={CSS_CLASSES.EDU_PREVIEW_SCHOOL}>
             {education.school}

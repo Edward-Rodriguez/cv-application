@@ -10,8 +10,6 @@ export const USER_FIELDS = {
   WEBSITE: 'website',
   EDUCATION: 'education',
   WORK_EXPERIENCE: 'workexperience',
-  // JOB_TITLE:'jobtitle',
-  // EMPLOYER:'employer',
 };
 
 export const INPUT_TYPES = {
@@ -25,20 +23,6 @@ export const INPUT_TYPES = {
 export const BUTTON_LABELS = {
   NEXT_STEP: 'Next Step',
   PREVIOUS: 'Previous',
-};
-
-export const CSS_CLASSES = {
-  FORM_CONTROL: 'form-control',
-  ERROR: 'error',
-  ERROR_MESSAGE: 'error-message',
-  LABEL_TEXT: 'label-text',
-  BUTTON_CONTAINER: 'buttonContainer',
-  LEGEND: 'fieldset-legend',
-  CUSTOM_DIVIDER: 'custom-divider',
-  FORM_SECTION: 'form-section',
-  EDU_PREVIEW: 'education-preview',
-  EDU_PREVIEW_BTN: 'edu-preview-btn',
-  EDU_PREVIEW_SCHOOL: 'edu-preview-school',
 };
 
 export const UI_STATES = {
@@ -62,4 +46,25 @@ export const AUTOCOMPLETE = {
   URL: 'url',
   EMAIL_ADDRESS: 'email',
   TELEPHONE_NUMBER: 'tel-national',
+};
+
+export const CSS_CLASSES = {
+  FORM_CONTROL: 'form-control',
+  ERROR: 'error',
+  ERROR_MESSAGE: 'error-message',
+  LABEL_TEXT: 'label-text',
+  BUTTON_CONTAINER: 'buttonContainer',
+  LEGEND: 'fieldset-legend',
+  CUSTOM_DIVIDER: 'custom-divider',
+  FORM_SECTION: 'form-section',
+  EDU_PREVIEW: 'education-preview',
+  EDU_PREVIEW_BTN: 'edu-preview-btn',
+  EDU_PREVIEW_SCHOOL: 'edu-preview-school',
+  TEMPLATE_HEADER: 'template-header',
+  TEMPLATE: 'template',
+  TEMPLATE_SECTION: 'template-section',
+  TEMPLATE_SECTION_HEADER: 'template-section-hdr',
+  TEMPLATE_SECTION_CONTENT: 'template-section-content',
+  TEMPLATE_ICON: 'template-icon',
+  TEMPLATE_CONTAINER: 'template-container',
 };
