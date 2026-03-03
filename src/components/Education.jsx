@@ -2,7 +2,7 @@ import Fieldset from './Fieldset';
 import Input from './Input';
 import SubmitButton from './SubmitButton';
 import TextArea from './TextArea';
-// import EducationPreview from './EducationPreview';
+import EducationPreview from './EducationPreview';
 import { LABELS } from '../consts/headings';
 import { USER_FIELDS, INPUT_TYPES, BUTTON_LABELS } from '../consts/input';
 
@@ -27,10 +27,9 @@ export default function Education({
           }}
         /> */}
         <Input
-          label={LABELS.DEGREE}
+          label={LABELS.SCHOOL}
           type={INPUT_TYPES.TEXT}
           onChange={onChange}
-          error={errors && errors[USER_FIELDS.DEGREE]}
         />
         <Input
           label={LABELS.CITY_STATE}
@@ -38,9 +37,10 @@ export default function Education({
           onChange={onChange}
         />
         <Input
-          label={LABELS.SCHOOL}
+          label={LABELS.DEGREE}
           type={INPUT_TYPES.TEXT}
           onChange={onChange}
+          error={errors && errors[USER_FIELDS.DEGREE]}
         />
         <Input
           label={LABELS.GRADUATION_DATE}

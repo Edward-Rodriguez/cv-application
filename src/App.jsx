@@ -42,6 +42,7 @@ function App() {
   /**
    * Map the designated profile key that has an array,
    * Update the object at the given index with new value
+   * If object does not have id, assign new random id
    */
   function updateProfileArray(
     profileSectionKey,
@@ -51,7 +52,8 @@ function App() {
   ) {
     return profile[profileSectionKey].map((sectionItem, itemIndex) =>
       itemIndex === indexToUpdate
-        ? { ...sectionItem, [fieldToUpdate]: newValue }
+        ? (!('id' in sectionItem) && (sectionItem.id = crypto.randomUUID()),
+          { ...sectionItem, [fieldToUpdate]: newValue })
         : sectionItem,
     );
   }
@@ -91,6 +93,7 @@ function App() {
     e.preventDefault();
     setActiveIndex(activeIndex - 1);
     setAttemptedSubmit(false);
+    console.log(profile);
   }
 
   return (
