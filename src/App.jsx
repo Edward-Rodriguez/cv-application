@@ -144,7 +144,11 @@ function App() {
         </form>
       </section>
       <section className={CSS_CLASSES.TEMPLATE}>
-        <Template profile={profile} isActive={activeIndex === 3} />
+        <Template
+          profile={profile}
+          isActive={activeIndex === 3}
+          onPrevious={handlePrevious}
+        />
       </section>
     </>
   );

@@ -1,12 +1,19 @@
-import { CSS_CLASSES, DISPLAY, USER_FIELDS } from '../consts/input';
 import { LABELS, SECTIONS } from '../consts/headings';
 import TemplateSection from './TemplateSection';
 import '../styles/Template.css';
 import PersonIcon from '../assets/person-svgrepo-com.svg';
 import GraduateIcon from '../assets/graduate-cap-svgrepo-com.svg';
+import WorkIcon from '../assets/go-to-work-svgrepo-com.svg';
 import SubmitButton from './SubmitButton';
+import {
+  CSS_CLASSES,
+  DISPLAY,
+  USER_FIELDS,
+  INPUT_TYPES,
+  BUTTON_LABELS,
+} from '../consts/input';
 
-export default function Template({ profile, isActive }) {
+export default function Template({ profile, isActive, onPrevious }) {
   function composeAddress() {
     return (
       profile.address +
@@ -23,8 +30,6 @@ export default function Template({ profile, isActive }) {
       year: 'numeric',
     });
   }
-
-  function loadSample() {}
 
   return (
     <div
@@ -71,6 +76,33 @@ export default function Template({ profile, isActive }) {
           ))}
         </ul>
       </TemplateSection>
+      {/* <!------- Work Experience Section -------> */}
+      <TemplateSection
+        id='template-work-exp'
+        icon={WorkIcon}
+        title={SECTIONS.WORK_EXPERIENCE}>
+        <ul>
+          {profile[USER_FIELDS.WORK_EXPERIENCE].map((job) => (
+            <li key={job.id}>
+              <div>{job.jobtitle}</div>
+              <div>
+                {formatDate(job.startdate) + ' - ' + formatDate(job.enddate)}
+              </div>
+              <div>{job.citystate}</div>
+              <ul className='description'>
+                {job.description
+                  .split('\n')
+                  .map((entry, index) => entry && <li key={index}>{entry}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </TemplateSection>
+      <SubmitButton
+        type={INPUT_TYPES.BUTTON}
+        name={BUTTON_LABELS.PREVIOUS}
+        onSubmit={onPrevious}
+      />
     </div>
   );
 }

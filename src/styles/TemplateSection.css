@@ -1,5 +1,5 @@
 .template-section {
-  padding: 24px 24px 8px 24px;
+  padding: 32px 32px 8px 32px;
 }
 
 .template-section-hdr {
@@ -37,7 +37,7 @@
   font-weight: 700;
 }
 
-#template-educational li {
+.template-section li {
   width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -45,16 +45,31 @@
   justify-items: flex-start;
   row-gap: 8px;
   column-gap: 20px;
+  white-space: pre-line;
 }
 
-#template-educational li *:nth-child(n + 3) {
+.template-section li *:nth-child(n + 3) {
   grid-column: span 2;
 }
 
-#template-educational li *:first-child {
+.template-section li *:first-child {
   font-weight: 700;
 }
 
-#template-educational li *:nth-child(2) {
+.template-section li *:nth-child(2) {
   justify-self: flex-start;
+}
+
+.description {
+  text-align: left;
+  list-style-type: disc;
+}
+
+.description li {
+  display: list-item;
+  list-style-position: inside;
+}
+
+#template-work-exp ul:first-child li *:nth-child(2) {
+  justify-self: flex-end;
 }
