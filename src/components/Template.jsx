@@ -24,11 +24,16 @@ export default function Template({ profile, isActive, onPrevious }) {
     ).trim();
   }
 
-  function formatDate(date) {
-    return new Date(date).toLocaleString('default', {
-      month: 'long',
-      year: 'numeric',
-    });
+  function formatDate(input) {
+    if (!input) return '';
+    else {
+      const [year, month] = input.split('-');
+      const date = new Date(year, month - 1);
+      return date.toLocaleString('en-US', {
+        month: 'long',
+        year: 'numeric',
+      });
+    }
   }
 
   return (
@@ -91,7 +96,8 @@ export default function Template({ profile, isActive, onPrevious }) {
             <li key={job.id}>
               <div>{job.jobtitle}</div>
               <div>
-                {formatDate(job.startdate) + ' - ' + formatDate(job.enddate)}
+                {formatDate(job.startdate) + ' - '}
+                {job.enddate ? <>{formatDate(job.enddate)}</> : 'Present'}
               </div>
               <div>{job.citystate}</div>
               <ul className='description'>
