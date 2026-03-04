@@ -1,3 +1,7 @@
+.template-section {
+  padding: 24px 24px 8px 24px;
+}
+
 .template-section-hdr {
   display: flex;
   justify-items: flex-start;
@@ -18,14 +22,39 @@
 }
 
 .template-section-content {
+  padding-top: 12px;
+}
+
+#template-personal .template-section-content {
   display: grid;
   grid-template-columns: 200px 1fr;
   justify-items: flex-start;
   font-size: 16px;
-  row-gap: 12px;
-  padding-top: 12px;
+  row-gap: 8px;
 }
 
-.template-section-content div:nth-child(2n) {
+#template-personal .template-section-content div:nth-child(2n) {
   font-weight: 700;
+}
+
+#template-educational li {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  font-size: 16px;
+  justify-items: flex-start;
+  row-gap: 8px;
+  column-gap: 20px;
+}
+
+#template-educational li *:nth-child(n + 3) {
+  grid-column: span 2;
+}
+
+#template-educational li *:first-child {
+  font-weight: 700;
+}
+
+#template-educational li *:nth-child(2) {
+  justify-self: flex-start;
 }

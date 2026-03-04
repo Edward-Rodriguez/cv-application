@@ -10,6 +10,7 @@ export const USER_FIELDS = {
   WEBSITE: 'website',
   EDUCATION: 'education',
   WORK_EXPERIENCE: 'workexperience',
+  SCHOOL: 'school',
 };
 
 export const INPUT_TYPES = {
@@ -46,6 +47,7 @@ export const AUTOCOMPLETE = {
   URL: 'url',
   EMAIL_ADDRESS: 'email',
   TELEPHONE_NUMBER: 'tel-national',
+  ORGANIZATION: 'organization',
 };
 
 export const CSS_CLASSES = {

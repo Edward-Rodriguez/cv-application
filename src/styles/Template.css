@@ -17,12 +17,3 @@
   text-align: left;
   padding: 16px;
 }
-
-#template-personal .template-section {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-}
-
-.template-section {
-  padding: 24px;
-}

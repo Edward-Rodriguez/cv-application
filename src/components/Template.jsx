@@ -17,6 +17,15 @@ export default function Template({ profile, isActive }) {
     ).trim();
   }
 
+  function formatDate(date) {
+    return new Date(date).toLocaleString('default', {
+      month: 'long',
+      year: 'numeric',
+    });
+  }
+
+  function loadSample() {}
+
   return (
     <div
       style={{ display: isActive ? DISPLAY.GRID : DISPLAY.NONE }}
@@ -51,7 +60,16 @@ export default function Template({ profile, isActive }) {
         id='template-educational'
         icon={GraduateIcon}
         title={SECTIONS.EDUCATION}>
-        {/* {profile[USER_FIELDS.EDUCATION].map(edu => )} */}
+        <ul>
+          {profile[USER_FIELDS.EDUCATION].map((edu) => (
+            <li key={edu.id}>
+              <div>{edu.degree}</div>
+              <div>{formatDate(edu.graduationdate)}</div>
+              <div>{edu.school}</div>
+              <div>{edu.citystate}</div>
+            </li>
+          ))}
+        </ul>
       </TemplateSection>
     </div>
   );

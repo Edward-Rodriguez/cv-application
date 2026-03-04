@@ -52,6 +52,8 @@ function autoCompleteValue(id) {
       return AUTOCOMPLETE.URL;
     case USER_FIELDS.WEBSITE:
       return AUTOCOMPLETE.URL;
+    case USER_FIELDS.SCHOOL:
+      return AUTOCOMPLETE.ORGANIZATION;
     default:
       return null;
   }
