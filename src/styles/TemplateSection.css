@@ -52,7 +52,7 @@
   grid-column: span 2;
 }
 
-.template-section li *:first-child {
+.template-section li div:first-of-type {
   font-weight: 700;
 }
 

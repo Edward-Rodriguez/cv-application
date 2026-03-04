@@ -72,6 +72,11 @@ export default function Template({ profile, isActive, onPrevious }) {
               <div>{formatDate(edu.graduationdate)}</div>
               <div>{edu.school}</div>
               <div>{edu.citystate}</div>
+              <ul className='description'>
+                {edu.academicachievements
+                  .split('\n')
+                  .map((entry, index) => entry && <li key={index}>{entry}</li>)}
+              </ul>
             </li>
           ))}
         </ul>
