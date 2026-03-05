@@ -2,14 +2,14 @@ import { LABELS } from '../consts/headings';
 import { INPUT_TYPES, BUTTON_LABELS, USER_FIELDS } from '../consts/input';
 import Fieldset from './Fieldset';
 import Input from './Input';
-import SubmitButton from './SubmitButton';
+import Button from './Button';
 
 export default function PersonalDetails({
   id,
   title,
   isActive,
   onChange,
-  onSubmit,
+  onClick,
   errors,
 }) {
   return (
@@ -67,10 +67,10 @@ export default function PersonalDetails({
         type={INPUT_TYPES.URL}
         onChange={onChange}
       />
-      <SubmitButton
+      <Button
         type={INPUT_TYPES.BUTTON}
         name={BUTTON_LABELS.NEXT_STEP}
-        onSubmit={onSubmit}
+        onClick={onClick}
       />
     </Fieldset>
   );

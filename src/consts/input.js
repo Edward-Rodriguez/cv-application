@@ -24,6 +24,7 @@ export const INPUT_TYPES = {
 export const BUTTON_LABELS = {
   NEXT_STEP: 'Next Step',
   PREVIOUS: 'Previous',
+  VIEW_TEMPLATE: 'View Template',
 };
 
 export const UI_STATES = {

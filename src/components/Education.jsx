@@ -1,6 +1,6 @@
 import Fieldset from './Fieldset';
 import Input from './Input';
-import SubmitButton from './SubmitButton';
+import Button from './Button';
 import TextArea from './TextArea';
 import EducationPreview from './EducationPreview';
 import { LABELS } from '../consts/headings';
@@ -11,7 +11,7 @@ export default function Education({
   id,
   isActive,
   onChange,
-  onSubmit,
+  onClick,
   onPrevious,
   errors,
 }) {
@@ -53,15 +53,15 @@ export default function Education({
           cols={30}
           onChange={onChange}
         />
-        <SubmitButton
+        <Button
           type={INPUT_TYPES.BUTTON}
           name={BUTTON_LABELS.NEXT_STEP}
-          onSubmit={onSubmit}
+          onClick={onClick}
         />
-        <SubmitButton
+        <Button
           type={INPUT_TYPES.BUTTON}
           name={BUTTON_LABELS.PREVIOUS}
-          onSubmit={onPrevious}
+          onClick={onPrevious}
         />
       </Fieldset>
     </>

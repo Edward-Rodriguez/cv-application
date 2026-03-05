@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import PersonalDetails from './components/PersonalDetails';
 import Education from './components/Education';
@@ -7,6 +7,7 @@ import { SECTIONS } from './consts/headings';
 import { CSS_CLASSES, USER_FIELDS } from './consts/input';
 import WorkExperience from './components/WorkExperience';
 import Template from './components/Template';
+import { sampleData } from './consts/sampleData';
 
 function App() {
   const [profile, setProfile] = useState({
@@ -19,9 +20,13 @@ function App() {
     citytown: '',
     linkedin: '',
     website: '',
-    education: [{}],
-    workexperience: [{}],
+    education: [],
+    workexperience: [],
   });
+
+  useEffect(() => {
+    setProfile(sampleData);
+  }, []);
 
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
   const [activeIndex, setActiveIndex] = useState(0);
@@ -53,8 +58,7 @@ function App() {
   ) {
     return profile[profileSectionKey].map((sectionItem, itemIndex) =>
       itemIndex === indexToUpdate
-        ? (!('id' in sectionItem) && (sectionItem.id = crypto.randomUUID()),
-          { ...sectionItem, [fieldToUpdate]: newValue })
+        ? { ...sectionItem, [fieldToUpdate]: newValue }
         : sectionItem,
     );
   }
@@ -67,6 +71,10 @@ function App() {
    */
   function handleProfileArrayChange(e, category, entryIndex) {
     const input = e.target;
+    // create a new obj with random id if it doesn't exist
+    if (!profile[category][entryIndex]) {
+      profile[category].push({ id: crypto.randomUUID() });
+    }
     const updatedProfile = {
       ...profile,
       [category]: updateProfileArray(
@@ -107,7 +115,7 @@ function App() {
             id={normalizeString(SECTIONS.PERSONAL_DETAILS)}
             isActive={activeIndex === 0}
             onChange={handleOnChange}
-            onSubmit={handleNextStep}
+            onClick={handleNextStep}
             errors={errors}
           />
           {/* <!-- Education Section --> */}
@@ -122,7 +130,7 @@ function App() {
                 activeEducationIndex,
               )
             }
-            onSubmit={handleNextStep}
+            onClick={handleNextStep}
             onPrevious={handlePrevious}
             errors={errors}
           />
@@ -138,7 +146,7 @@ function App() {
                 activeWorkExpIndex,
               )
             }
-            onSubmit={handleNextStep}
+            onClick={handleNextStep}
             onPrevious={handlePrevious}
           />
         </form>

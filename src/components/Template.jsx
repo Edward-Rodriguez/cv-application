@@ -4,7 +4,7 @@ import '../styles/Template.css';
 import PersonIcon from '../assets/person-svgrepo-com.svg';
 import GraduateIcon from '../assets/graduate-cap-svgrepo-com.svg';
 import WorkIcon from '../assets/go-to-work-svgrepo-com.svg';
-import SubmitButton from './SubmitButton';
+import Button from './Button';
 import {
   CSS_CLASSES,
   DISPLAY,
@@ -78,9 +78,12 @@ export default function Template({ profile, isActive, onPrevious }) {
               <div>{edu.school}</div>
               <div>{edu.citystate}</div>
               <ul className='description'>
-                {edu.academicachievements
-                  .split('\n')
-                  .map((entry, index) => entry && <li key={index}>{entry}</li>)}
+                {edu.academicachievements &&
+                  edu.academicachievements
+                    .split('\n')
+                    .map(
+                      (entry, index) => entry && <li key={index}>{entry}</li>,
+                    )}
               </ul>
             </li>
           ))}
@@ -101,18 +104,21 @@ export default function Template({ profile, isActive, onPrevious }) {
               </div>
               <div>{job.citystate}</div>
               <ul className='description'>
-                {job.description
-                  .split('\n')
-                  .map((entry, index) => entry && <li key={index}>{entry}</li>)}
+                {job.description &&
+                  job.description
+                    .split('\n')
+                    .map(
+                      (entry, index) => entry && <li key={index}>{entry}</li>,
+                    )}
               </ul>
             </li>
           ))}
         </ul>
       </TemplateSection>
-      <SubmitButton
+      <Button
         type={INPUT_TYPES.BUTTON}
         name={BUTTON_LABELS.PREVIOUS}
-        onSubmit={onPrevious}
+        onClick={onPrevious}
       />
     </div>
   );
