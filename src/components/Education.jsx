@@ -3,6 +3,9 @@ import Input from './Input';
 import Button from './Button';
 import TextArea from './TextArea';
 import EducationPreview from './EducationPreview';
+import RightArrowIcon from '../assets/right-icon-white.svg';
+import LeftArrowIcon from '../assets/left-icon-white.svg';
+import PlusIcon from '../assets/plus-icon.svg';
 import { LABELS } from '../consts/headings';
 import {
   USER_FIELDS,
@@ -19,7 +22,6 @@ export default function Education({
   onChange,
   onClick,
   onPrevious,
-  setProfile,
   onClear,
   profile,
 }) {
@@ -29,18 +31,6 @@ export default function Education({
       ? profile[USER_FIELDS.EDUCATION][activeEduIndex]
       : '';
 
-  function handleClearForm(formSectionId) {
-    const inputs = document
-      .getElementById(formSectionId)
-      .querySelectorAll('input, textArea');
-    inputs.forEach((input) => {
-      if (input instanceof HTMLTextAreaElement) {
-        input.textContent = '';
-      } else {
-        input.value = '';
-      }
-    });
-  }
   return (
     <>
       <Fieldset title={title} id={id} isActive={isActive}>
@@ -89,6 +79,7 @@ export default function Education({
               buttonType={INPUT_TYPES.SUBMIT}
               name={BUTTON_LABELS.PREVIOUS}
               onClick={onPrevious}
+              leftIcon={LeftArrowIcon}
             />
             <Button
               buttonType={INPUT_TYPES.BUTTON}
@@ -101,11 +92,13 @@ export default function Education({
               buttonType={INPUT_TYPES.SUBMIT}
               name={BUTTON_LABELS.ADD_EDU}
               onClick={onClick}
+              leftIcon={PlusIcon}
             />
             <Button
               buttonType={INPUT_TYPES.SUBMIT}
               name={BUTTON_LABELS.NEXT_STEP}
               onClick={onClick}
+              rightIcon={RightArrowIcon}
             />
           </div>
         </div>

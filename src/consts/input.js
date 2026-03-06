@@ -60,6 +60,7 @@ export const CSS_CLASSES = {
   ERROR_MESSAGE: 'error-message',
   LABEL_TEXT: 'label-text',
   BUTTON_CONTAINER: 'buttonContainer',
+  BTN_ICON: 'btn-icon',
   BTN_GRP: 'btn-grp',
   LEGEND: 'fieldset-legend',
   CUSTOM_DIVIDER: 'custom-divider',

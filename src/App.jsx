@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import PersonalDetails from './components/PersonalDetails';
 import Education from './components/Education';
@@ -12,6 +12,7 @@ import {
   initEduEntry,
   initWorkEntry,
 } from './consts/initValues';
+import { sampleData } from './consts/sampleData.js';
 
 function App() {
   const [profile, setProfile] = useState(initPersonalDetails);
@@ -22,6 +23,10 @@ function App() {
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [activeEducationIndex, setActiveEdcationIndex] = useState(0);
   const [activeWorkExpIndex, setactiveWorkExpIndex] = useState(0);
+
+  useEffect(() => {
+    setProfile(sampleData);
+  }, []);
 
   function handleOnChange(e) {
     const input = e.target;
@@ -109,7 +114,13 @@ function App() {
 
   function handleClearForm(category, indexToUpdate) {
     if (category === normalizeString(SECTIONS.PERSONAL_DETAILS)) {
-      setProfile(initPersonalDetails);
+      setProfile({
+        ...initPersonalDetails,
+        [USER_FIELDS.EDUCATION]: [...profile[USER_FIELDS.EDUCATION]],
+        [USER_FIELDS.WORK_EXPERIENCE]: [
+          ...profile[USER_FIELDS.WORK_EXPERIENCE],
+        ],
+      });
     } else {
       setProfile({
         ...profile,
@@ -131,7 +142,9 @@ function App() {
             isActive={activeIndex === 0}
             onChange={handleOnChange}
             onClick={handleNextStep}
+            onClear={handleClearForm}
             errors={errors}
+            profile={profile}
           />
           {/* <!-- Education Section --> */}
           <Education
@@ -165,6 +178,8 @@ function App() {
             }
             onClick={handleNextStep}
             onPrevious={handlePrevious}
+            onClear={handleClearForm}
+            profile={profile}
           />
         </form>
       </section>
