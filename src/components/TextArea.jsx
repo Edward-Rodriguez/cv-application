@@ -14,7 +14,7 @@ export default function TextArea({ label, rows, cols, value, onChange }) {
           cols={cols}
           rows={rows}
           onChange={onChange}
-          defaultValue={value}></textarea>
+          value={value}></textarea>
       </label>
     </div>
   );
