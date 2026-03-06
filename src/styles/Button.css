@@ -1,60 +1,102 @@
-.buttonContainer {
-  display: grid;
-  place-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.btn-grp {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0px;
+}
+
+.btn-grp div {
+  display: flex;
+  column-gap: 8px;
+}
+
+.btn-grp button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  background-color: initial;
+  color: grey;
+  outline: 1px solid grey;
+}
+
+button[name='clear']:hover,
+button[name='addanothereducation']:hover {
+  text-decoration: underline;
+  color: rgb(100, 100, 100);
 }
 
 button[name='nextstep'] {
-  margin-top: 28px;
-  min-width: 300px;
   background-color: #8070c4;
-  border-radius: 8px;
   border-style: none;
   color: #ffffff;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 20px;
   list-style: none;
   outline: none;
-  padding: 20px;
   text-align: center;
   text-decoration: none;
   transition: color 100ms;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  height: 60px;
+  padding: 8px 24px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+button[name='nextstep']::after {
+  content: '˃';
+  font-size: 2em; /* make the arrow bigger */
+  margin-left: 8px;
+  line-height: 1;
+  height: 14px;
+}
+
+button[name='previous'] {
+  background-color: rgb(150, 150, 150);
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+button[name='previous']::before {
+  content: '˂';
+  font-size: 2em; /* make the arrow bigger */
+  margin-right: 8px;
+  line-height: 1;
+  height: 14px;
+}
+
+button[name='previous']:hover {
+  background-color: rgb(120, 120, 120);
 }
 
 button[name='nextstep']:hover,
 button[name='nextstep']:focus {
   background-color: #7260bf;
-  text-decoration: underline;
 }
 
-button[name='previous'] {
-  background-color: transparent;
-  border-style: none;
-  color: #afafaf;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  list-style: none;
-  outline: none;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
+button[name='addanothereducation'] {
+  display: flex;
+  align-items: center;
 }
 
-button[name='previous']:hover,
-button[name='previous']:focus {
-  text-decoration: underline;
-  color: #888888;
-}
-
-button[name='previous']::before {
-  content: '˂';
-  display: inline-block;
+/* button[name='addanothereducation']::before {
+  display: inline-flex; 
+  align-items: center;
+  content: '+';
+  font-size: 2em;
   margin-right: 8px;
-}
+  line-height: 1;
+  height: 16px;
+  text-decoration: none;
+} */

@@ -68,7 +68,7 @@ export default function PersonalDetails({
         onChange={onChange}
       />
       <Button
-        type={INPUT_TYPES.BUTTON}
+        buttonType={INPUT_TYPES.SUBMIT}
         name={BUTTON_LABELS.NEXT_STEP}
         onClick={onClick}
       />

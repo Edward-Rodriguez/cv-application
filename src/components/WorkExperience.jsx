@@ -49,12 +49,12 @@ export default function WorkExperience({
           onChange={onChange}
         />
         <Button
-          type={INPUT_TYPES.BUTTON}
+          buttonType={INPUT_TYPES.SUBMIT}
           name={BUTTON_LABELS.NEXT_STEP}
           onClick={onClick}
         />
         <Button
-          type={INPUT_TYPES.BUTTON}
+          buttonType={INPUT_TYPES.SUBMIT}
           name={BUTTON_LABELS.PREVIOUS}
           onClick={onPrevious}
         />

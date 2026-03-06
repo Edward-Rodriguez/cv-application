@@ -25,6 +25,9 @@ export const BUTTON_LABELS = {
   NEXT_STEP: 'Next Step',
   PREVIOUS: 'Previous',
   VIEW_TEMPLATE: 'View Template',
+  CLEAR: 'Clear',
+  ADD_EDU: 'Add Another Education',
+  ADD_WORK_EXP: 'Add Another Work Experience',
 };
 
 export const UI_STATES = {
@@ -57,6 +60,7 @@ export const CSS_CLASSES = {
   ERROR_MESSAGE: 'error-message',
   LABEL_TEXT: 'label-text',
   BUTTON_CONTAINER: 'buttonContainer',
+  BTN_GRP: 'btn-grp',
   LEGEND: 'fieldset-legend',
   CUSTOM_DIVIDER: 'custom-divider',
   FORM_SECTION: 'form-section',

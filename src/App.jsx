@@ -24,9 +24,27 @@ function App() {
     workexperience: [],
   });
 
-  useEffect(() => {
-    setProfile(sampleData);
-  }, []);
+  const initEduEntry = {
+    id: '',
+    school: '',
+    degree: '',
+    citystate: '',
+    graduationdate: '',
+    academicachievements: '',
+  };
+
+  const initWorkEntry = {
+    jobtitle: '',
+    citystate: '',
+    employer: '',
+    startdate: '',
+    enddate: '',
+    description: '',
+  };
+
+  // useEffect(() => {
+  //   setProfile(sampleData);
+  // }, []);
 
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
   const [activeIndex, setActiveIndex] = useState(0);
@@ -73,7 +91,11 @@ function App() {
     const input = e.target;
     // create a new obj with random id if it doesn't exist
     if (!profile[category][entryIndex]) {
-      profile[category].push({ id: crypto.randomUUID() });
+      if (category === USER_FIELDS.EDUCATION) {
+        profile[category].push({ ...initEduEntry, id: crypto.randomUUID() });
+      } else {
+        profile[category].push({ ...initWorkEntry, id: crypto.randomUUID() });
+      }
     }
     const updatedProfile = {
       ...profile,
@@ -105,6 +127,10 @@ function App() {
     console.log(profile);
   }
 
+  // function handleClearForm(sectionId){
+  //   setProfile({...profile, profile[sectionId]})
+  // }
+
   return (
     <>
       <section className={CSS_CLASSES.FORM_SECTION}>
@@ -132,7 +158,8 @@ function App() {
             }
             onClick={handleNextStep}
             onPrevious={handlePrevious}
-            errors={errors}
+            setProfile={setProfile}
+            profile={profile}
           />
           {/* <!------- Work Experience Section -------> */}
           <WorkExperience
