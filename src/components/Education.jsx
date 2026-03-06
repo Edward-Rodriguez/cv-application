@@ -28,16 +28,6 @@ export default function Education({
   setActiveEduIndex,
 }) {
   const [previewList, setPreviewList] = useState([]);
-  // const [eduProfile, setEduProfile] = useState(() => {
-  //   if (activeEduIndex in profile[USER_FIELDS.EDUCATION]) {
-  //     return profile[USER_FIELDS.EDUCATION][activeEduIndex];
-  //   } else {
-  //     return '';
-  //   }
-  // });
-  // const [eduProfile, setEduProfile] = useState(
-  //   profile[USER_FIELDS.EDUCATION][activeEduIndex] ?? '',
-  // );
   const eduProfile = profile[USER_FIELDS.EDUCATION][activeEduIndex] ?? '';
 
   function handleAddEducation() {
@@ -47,7 +37,7 @@ export default function Education({
 
   function handlePreviewClick(e) {
     const btn = e.target.closest(`.${CSS_CLASSES.EDU_PREVIEW_BTN}`);
-    const updatedList = previewList.filter((edu) => {
+    let updatedList = previewList.filter((edu) => {
       if (edu.id !== btn.id) {
         return edu;
       } else {
@@ -57,6 +47,7 @@ export default function Education({
         setActiveEduIndex(newIndex);
       }
     });
+    if (eduProfile) updatedList = [...updatedList, eduProfile];
     setPreviewList(updatedList);
   }
 
