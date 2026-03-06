@@ -93,15 +93,7 @@ export default function Education({
             <Button
               buttonType={INPUT_TYPES.BUTTON}
               name={BUTTON_LABELS.CLEAR}
-              onClick={() => {
-                setProfile({
-                  ...profile,
-                  [USER_FIELDS.EDUCATION]: [
-                    ...profile[USER_FIELDS.EDUCATION],
-                    (profile[USER_FIELDS.EDUCATION][activeEduIndex] = {}),
-                  ],
-                });
-              }}
+              onClick={() => onClear(USER_FIELDS.EDUCATION, activeEduIndex)}
             />
           </div>
           <div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import PersonalDetails from './components/PersonalDetails';
 import Education from './components/Education';
@@ -7,44 +7,14 @@ import { SECTIONS } from './consts/headings';
 import { CSS_CLASSES, USER_FIELDS } from './consts/input';
 import WorkExperience from './components/WorkExperience';
 import Template from './components/Template';
-import { sampleData } from './consts/sampleData';
+import {
+  initPersonalDetails,
+  initEduEntry,
+  initWorkEntry,
+} from './consts/initValues';
 
 function App() {
-  const [profile, setProfile] = useState({
-    firstname: '',
-    lastname: '',
-    phonenumber: '',
-    email: '',
-    address: '',
-    zipcode: '',
-    citytown: '',
-    linkedin: '',
-    website: '',
-    education: [],
-    workexperience: [],
-  });
-
-  const initEduEntry = {
-    id: '',
-    school: '',
-    degree: '',
-    citystate: '',
-    graduationdate: '',
-    academicachievements: '',
-  };
-
-  const initWorkEntry = {
-    jobtitle: '',
-    citystate: '',
-    employer: '',
-    startdate: '',
-    enddate: '',
-    description: '',
-  };
-
-  // useEffect(() => {
-  //   setProfile(sampleData);
-  // }, []);
+  const [profile, setProfile] = useState(initPersonalDetails);
 
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
   const [activeIndex, setActiveIndex] = useState(0);
@@ -90,7 +60,10 @@ function App() {
   function handleProfileArrayChange(e, category, entryIndex) {
     const input = e.target;
     // create a new obj with random id if it doesn't exist
-    if (!profile[category][entryIndex]) {
+    if (
+      !profile[category][entryIndex] ||
+      profile[category][entryIndex].id === ''
+    ) {
       if (category === USER_FIELDS.EDUCATION) {
         profile[category].push({ ...initEduEntry, id: crypto.randomUUID() });
       } else {
@@ -127,9 +100,25 @@ function App() {
     console.log(profile);
   }
 
-  // function handleClearForm(sectionId){
-  //   setProfile({...profile, profile[sectionId]})
-  // }
+  function initializeValues(obj) {
+    const newObj = Object.fromEntries(Object.keys(obj).map((key) => [key, '']));
+    console.log(newObj);
+
+    return Object.fromEntries(Object.keys(obj).map((key) => [key, '']));
+  }
+
+  function handleClearForm(category, indexToUpdate) {
+    if (category === normalizeString(SECTIONS.PERSONAL_DETAILS)) {
+      setProfile(initPersonalDetails);
+    } else {
+      setProfile({
+        ...profile,
+        [category]: profile[category].map((section, index) => {
+          return index === indexToUpdate ? initializeValues(section) : section;
+        }),
+      });
+    }
+  }
 
   return (
     <>
@@ -158,6 +147,7 @@ function App() {
             }
             onClick={handleNextStep}
             onPrevious={handlePrevious}
+            onClear={handleClearForm}
             setProfile={setProfile}
             profile={profile}
           />
