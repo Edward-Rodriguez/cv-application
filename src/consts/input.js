@@ -75,4 +75,5 @@ export const CSS_CLASSES = {
   TEMPLATE_SECTION_CONTENT: 'template-section-content',
   TEMPLATE_ICON: 'template-icon',
   TEMPLATE_CONTAINER: 'template-container',
+  PREVIEW_LIST: 'preview-list',
 };

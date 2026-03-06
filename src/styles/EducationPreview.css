@@ -6,7 +6,7 @@
 }
 
 .edu-preview-btn {
-  grid-column: span 2;
+  width: 100%;
   border: none;
   cursor: pointer;
   padding: 20px 0px;
@@ -14,6 +14,15 @@
   background-color: transparent;
 }
 
+.edu-preview-btn:hover {
+  background-color: rgb(238, 238, 238);
+}
+
 .edu-preview-school {
   font-weight: 700;
+}
+
+.preview-list {
+  grid-column: span 2;
+  list-style-type: none;
 }

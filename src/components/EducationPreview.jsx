@@ -1,19 +1,14 @@
 import { CSS_CLASSES } from '../consts/input';
 import '../styles/EducationPreview.css';
 
-export default function EducationPreview({
-  title,
-  id,
-  isActive,
-  onClick,
-  education,
-}) {
+export default function EducationPreview({ id, onClick, education, type }) {
   return (
     <>
       <button
         className={CSS_CLASSES.EDU_PREVIEW_BTN}
+        type={type}
         onClick={onClick}
-        data-id={id}>
+        id={id}>
         <div className={CSS_CLASSES.EDU_PREVIEW}>
           <div className={CSS_CLASSES.EDU_PREVIEW_SCHOOL}>
             {education.school}

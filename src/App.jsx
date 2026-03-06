@@ -24,9 +24,9 @@ function App() {
   const [activeEducationIndex, setActiveEdcationIndex] = useState(0);
   const [activeWorkExpIndex, setactiveWorkExpIndex] = useState(0);
 
-  useEffect(() => {
-    setProfile(sampleData);
-  }, []);
+  // useEffect(() => {
+  //   setProfile(sampleData);
+  // }, []);
 
   function handleOnChange(e) {
     const input = e.target;
@@ -106,9 +106,6 @@ function App() {
   }
 
   function initializeValues(obj) {
-    const newObj = Object.fromEntries(Object.keys(obj).map((key) => [key, '']));
-    console.log(newObj);
-
     return Object.fromEntries(Object.keys(obj).map((key) => [key, '']));
   }
 
@@ -151,6 +148,13 @@ function App() {
             title={SECTIONS.EDUCATION}
             id={normalizeString(SECTIONS.EDUCATION, '')}
             isActive={activeIndex === 1}
+            activeEduIndex={activeEducationIndex}
+            setActiveEduIndex={setActiveEdcationIndex}
+            onClick={handleNextStep}
+            onPrevious={handlePrevious}
+            onClear={handleClearForm}
+            setProfile={setProfile}
+            profile={profile}
             onChange={(e) =>
               handleProfileArrayChange(
                 e,
@@ -158,11 +162,6 @@ function App() {
                 activeEducationIndex,
               )
             }
-            onClick={handleNextStep}
-            onPrevious={handlePrevious}
-            onClear={handleClearForm}
-            setProfile={setProfile}
-            profile={profile}
           />
           {/* <!------- Work Experience Section -------> */}
           <WorkExperience

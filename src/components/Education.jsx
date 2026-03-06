@@ -24,24 +24,57 @@ export default function Education({
   onPrevious,
   onClear,
   profile,
+  activeEduIndex,
+  setActiveEduIndex,
 }) {
-  const [activeEduIndex, setActiveEduIndex] = useState(0);
-  const eduProfile =
-    activeEduIndex in profile[USER_FIELDS.EDUCATION]
-      ? profile[USER_FIELDS.EDUCATION][activeEduIndex]
-      : '';
+  const [previewList, setPreviewList] = useState([]);
+  // const [eduProfile, setEduProfile] = useState(() => {
+  //   if (activeEduIndex in profile[USER_FIELDS.EDUCATION]) {
+  //     return profile[USER_FIELDS.EDUCATION][activeEduIndex];
+  //   } else {
+  //     return '';
+  //   }
+  // });
+  // const [eduProfile, setEduProfile] = useState(
+  //   profile[USER_FIELDS.EDUCATION][activeEduIndex] ?? '',
+  // );
+  const eduProfile = profile[USER_FIELDS.EDUCATION][activeEduIndex] ?? '';
+
+  function handleAddEducation() {
+    setPreviewList([...previewList, eduProfile]);
+    setActiveEduIndex(activeEduIndex + 1);
+  }
+
+  function handlePreviewClick(e) {
+    const btn = e.target.closest(`.${CSS_CLASSES.EDU_PREVIEW_BTN}`);
+    const updatedList = previewList.filter((edu) => {
+      if (edu.id !== btn.id) {
+        return edu;
+      } else {
+        const newIndex = profile[USER_FIELDS.EDUCATION].findIndex(
+          (item) => edu.id === item.id,
+        );
+        setActiveEduIndex(newIndex);
+      }
+    });
+    setPreviewList(updatedList);
+  }
 
   return (
     <>
       <Fieldset title={title} id={id} isActive={isActive}>
-        {/* <EducationPreview
-          education={{
-            citystate: 'South Redford Dr., NY',
-            degree: 'B.A. Computer Science',
-            graduationdate: '2026-04',
-            school: 'NYU University',
-          }}
-        /> */}
+        <ul className={CSS_CLASSES.PREVIEW_LIST}>
+          {previewList.map((edu) => (
+            <li key={edu.id}>
+              <EducationPreview
+                id={edu.id}
+                education={edu}
+                type={INPUT_TYPES.BUTTON}
+                onClick={(e) => handlePreviewClick(e)}
+              />
+            </li>
+          ))}
+        </ul>
         <Input
           label={LABELS.SCHOOL}
           type={INPUT_TYPES.TEXT}
@@ -89,9 +122,9 @@ export default function Education({
           </div>
           <div>
             <Button
-              buttonType={INPUT_TYPES.SUBMIT}
+              buttonType={INPUT_TYPES.BUTTON}
               name={BUTTON_LABELS.ADD_EDU}
-              onClick={onClick}
+              onClick={handleAddEducation}
               leftIcon={PlusIcon}
             />
             <Button
