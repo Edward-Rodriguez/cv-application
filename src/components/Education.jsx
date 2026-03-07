@@ -31,8 +31,9 @@ export default function Education({
   const eduProfile = profile[USER_FIELDS.EDUCATION][activeEduIndex] ?? '';
 
   function handleAddEducation() {
+    if (!eduProfile) return;
     setPreviewList([...previewList, eduProfile]);
-    setActiveEduIndex(activeEduIndex + 1);
+    setActiveEduIndex(profile[USER_FIELDS.EDUCATION].length);
   }
 
   function handlePreviewClick(e) {

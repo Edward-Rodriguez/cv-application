@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import PersonalDetails from './components/PersonalDetails';
 import Education from './components/Education';
@@ -12,7 +12,6 @@ import {
   initEduEntry,
   initWorkEntry,
 } from './consts/initValues';
-import { sampleData } from './consts/sampleData.js';
 
 function App() {
   const [profile, setProfile] = useState(initPersonalDetails);
@@ -23,10 +22,6 @@ function App() {
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [activeEducationIndex, setActiveEdcationIndex] = useState(0);
   const [activeWorkExpIndex, setactiveWorkExpIndex] = useState(0);
-
-  // useEffect(() => {
-  //   setProfile(sampleData);
-  // }, []);
 
   function handleOnChange(e) {
     const input = e.target;
@@ -39,52 +34,36 @@ function App() {
   }
 
   /**
-   * Map the designated profile key that has an array,
-   * Update the object at the given index with new value
-   * If object does not have id, assign new random id
-   */
-  function updateProfileArray(
-    profileSectionKey,
-    fieldToUpdate,
-    newValue,
-    indexToUpdate,
-  ) {
-    return profile[profileSectionKey].map((sectionItem, itemIndex) =>
-      itemIndex === indexToUpdate
-        ? { ...sectionItem, [fieldToUpdate]: newValue }
-        : sectionItem,
-    );
-  }
-
-  /**
    * used to update profile properties that contain an array of objects
    * Ex: education, workexperience properties
    * category: profile key that is being updated, Ex: education
    * entryIndex: index of object in the array to be updated
    */
   function handleProfileArrayChange(e, category, entryIndex) {
-    const input = e.target;
-    // create a new obj with random id if it doesn't exist
-    if (
-      !profile[category][entryIndex] ||
-      profile[category][entryIndex].id === ''
-    ) {
-      if (category === USER_FIELDS.EDUCATION) {
-        profile[category].push({ ...initEduEntry, id: crypto.randomUUID() });
-      } else {
-        profile[category].push({ ...initWorkEntry, id: crypto.randomUUID() });
+    const { id, value } = e.target;
+    setProfile((prevProfile) => {
+      const entries = [...prevProfile[category]];
+      if (!entries[entryIndex]) {
+        entries[entryIndex] = createEntry(category);
       }
-    }
-    const updatedProfile = {
-      ...profile,
-      [category]: updateProfileArray(
-        category,
-        input.id,
-        input.value,
-        entryIndex,
-      ),
+      entries[entryIndex] = {
+        ...entries[entryIndex],
+        [id]: value,
+      };
+      return {
+        ...prevProfile,
+        [category]: entries,
+      };
+    });
+  }
+
+  function createEntry(category) {
+    const baseEntry =
+      category === USER_FIELDS.EDUCATION ? initEduEntry : initWorkEntry;
+    return {
+      ...baseEntry,
+      id: crypto.randomUUID(),
     };
-    setProfile(updatedProfile);
   }
 
   function handleNextStep(e) {
@@ -105,25 +84,22 @@ function App() {
     console.log(profile);
   }
 
-  function initializeValues(obj) {
-    return Object.fromEntries(Object.keys(obj).map((key) => [key, '']));
-  }
-
   function handleClearForm(category, indexToUpdate) {
-    if (category === normalizeString(SECTIONS.PERSONAL_DETAILS)) {
+    const educationKey = USER_FIELDS.EDUCATION;
+    const workKey = USER_FIELDS.WORK_EXPERIENCE;
+    const personalDetailsKey = normalizeString(SECTIONS.PERSONAL_DETAILS);
+    if (category === personalDetailsKey) {
       setProfile({
         ...initPersonalDetails,
-        [USER_FIELDS.EDUCATION]: [...profile[USER_FIELDS.EDUCATION]],
-        [USER_FIELDS.WORK_EXPERIENCE]: [
-          ...profile[USER_FIELDS.WORK_EXPERIENCE],
-        ],
+        [educationKey]: [...profile[educationKey]],
+        [workKey]: [...profile[workKey]],
       });
     } else {
       setProfile({
         ...profile,
-        [category]: profile[category].map((section, index) => {
-          return index === indexToUpdate ? initializeValues(section) : section;
-        }),
+        [category]: profile[category].filter(
+          (_, index) => index !== indexToUpdate,
+        ),
       });
     }
   }
@@ -168,6 +144,10 @@ function App() {
             title={SECTIONS.WORK_EXPERIENCE}
             id={normalizeString(SECTIONS.WORK_EXPERIENCE, '')}
             isActive={activeIndex === 2}
+            onClick={handleNextStep}
+            onPrevious={handlePrevious}
+            onClear={handleClearForm}
+            profile={profile}
             onChange={(e) =>
               handleProfileArrayChange(
                 e,
@@ -175,10 +155,6 @@ function App() {
                 activeWorkExpIndex,
               )
             }
-            onClick={handleNextStep}
-            onPrevious={handlePrevious}
-            onClear={handleClearForm}
-            profile={profile}
           />
         </form>
       </section>
