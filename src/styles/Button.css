@@ -54,7 +54,8 @@ button[name='previous'] .btn-icon {
 /* =========================
    Add-Another-Education / Clear Buttons
 ========================= */
-button[name='addeducation'] {
+button[name='addeducation'],
+button[name='addworkexperience'] {
   display: flex;
   align-items: center;
   grid-column: 4;
@@ -65,18 +66,21 @@ button[name='clear'] {
   grid-column: 2;
 }
 
-button[name='addeducation'] .btn-icon {
+button[name='addeducation'] .btn-icon,
+button[name='addworkexperience'] .btn-icon {
   margin-right: 8px;
   height: 18px;
 }
 
 button[name='clear'],
-button[name='addeducation'] {
+button[name='addeducation'],
+button[name='addworkexperience'] {
   transition: color 100ms;
 }
 
 button[name='clear']:hover,
-button[name='addeducation']:hover {
+button[name='addeducation']:hover,
+button[name='addworkexperience']:hover {
   text-decoration: underline;
   color: rgb(100, 100, 100);
 }
@@ -132,12 +136,18 @@ button[name='nextstep'] .btn-icon {
     row-gap: 8px;
   }
 
+  /* .btn-grp button {
+    font-size: 16px;
+    padding: ;
+  } */
+
   button[name='clear'] {
     grid-column: 1;
     grid-row: 1;
   }
 
-  button[name='addeducation'] {
+  button[name='addeducation'],
+  button[name='addworkexperience'] {
     width: 100%;
     justify-content: center;
     grid-column: 2;

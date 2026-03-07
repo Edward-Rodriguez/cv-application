@@ -27,7 +27,7 @@ export const BUTTON_LABELS = {
   VIEW_TEMPLATE: 'View Template',
   CLEAR: 'Clear',
   ADD_EDU: 'Add Education',
-  ADD_WORK_EXP: 'Add Another Work Experience',
+  ADD_WORK_EXP: 'Add Work Experience',
 };
 
 export const UI_STATES = {

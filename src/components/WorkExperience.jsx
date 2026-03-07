@@ -73,35 +73,31 @@ export default function WorkExperience({
           value={workProfile.description ?? ''}
         />
         <div className={CSS_CLASSES.BTN_GRP}>
-          <div>
-            <Button
-              buttonType={INPUT_TYPES.SUBMIT}
-              name={BUTTON_LABELS.PREVIOUS}
-              onClick={onPrevious}
-              leftIcon={LeftArrowIcon}
-            />
-            <Button
-              buttonType={INPUT_TYPES.BUTTON}
-              name={BUTTON_LABELS.CLEAR}
-              onClick={() =>
-                onClear(USER_FIELDS.WORK_EXPERIENCE, activeWorkIndex)
-              }
-            />
-          </div>
-          <div>
-            <Button
-              buttonType={INPUT_TYPES.SUBMIT}
-              name={BUTTON_LABELS.ADD_WORK_EXP}
-              onClick={onClick}
-              leftIcon={PlusIcon}
-            />
-            <Button
-              buttonType={INPUT_TYPES.SUBMIT}
-              name={BUTTON_LABELS.NEXT_STEP}
-              onClick={onClick}
-              rightIcon={RightArrowIcon}
-            />
-          </div>
+          <Button
+            buttonType={INPUT_TYPES.SUBMIT}
+            name={BUTTON_LABELS.PREVIOUS}
+            onClick={onPrevious}
+            leftIcon={LeftArrowIcon}
+          />
+          <Button
+            buttonType={INPUT_TYPES.BUTTON}
+            name={BUTTON_LABELS.CLEAR}
+            onClick={() =>
+              onClear(USER_FIELDS.WORK_EXPERIENCE, activeWorkIndex)
+            }
+          />
+          <Button
+            buttonType={INPUT_TYPES.SUBMIT}
+            name={BUTTON_LABELS.ADD_WORK_EXP}
+            onClick={onClick}
+            leftIcon={PlusIcon}
+          />
+          <Button
+            buttonType={INPUT_TYPES.SUBMIT}
+            name={BUTTON_LABELS.NEXT_STEP}
+            onClick={onClick}
+            rightIcon={RightArrowIcon}
+          />
         </div>
       </Fieldset>
     </>

@@ -12,28 +12,32 @@ fieldset input {
   width: 100%;
 }
 
-@media (min-width: 700px) {
+fieldset {
+  max-width: 800px;
+  margin: auto;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 16px;
+}
+
+fieldset .fieldset-legend {
+  grid-column: span 2;
+}
+
+#address-form,
+#academicachievements-form {
+  grid-column: span 2;
+}
+
+#address-form input {
+  width: 100%;
+}
+
+.buttonContainer {
+  grid-column: span 2;
+}
+
+@media (max-width: 700px) {
   fieldset {
-    max-width: 850px;
-    margin: auto;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 16px;
-  }
-
-  fieldset .fieldset-legend {
-    grid-column: span 2;
-  }
-
-  #address-form,
-  #academicachievements-form {
-    grid-column: span 2;
-  }
-
-  #address-form input {
-    width: 100%;
-  }
-
-  .buttonContainer {
-    grid-column: span 2;
+    padding: 10px 10px 0px 10px;
   }
 }
