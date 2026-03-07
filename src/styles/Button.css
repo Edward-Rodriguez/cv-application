@@ -130,16 +130,11 @@ button[name='nextstep'] .btn-icon {
 }
 
 @media (max-width: 700px) {
-  .btn-grp {
+  .btn-grp:not(#personal-details .btn-grp) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
     row-gap: 8px;
   }
-
-  /* .btn-grp button {
-    font-size: 16px;
-    padding: ;
-  } */
 
   button[name='clear'] {
     grid-column: 1;
@@ -160,9 +155,18 @@ button[name='nextstep'] .btn-icon {
     justify-content: center;
   }
 
-  button[name='nextstep'] {
+  button[name='nextstep']:not(#personal-details button[name='nextstep']) {
     grid-column: 2;
     grid-row: 2;
+    justify-self: auto;
+  }
+
+  #personal-details .btn-grp {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #personal-details button[name='nextstep'] {
+    grid-column: 2;
     justify-self: auto;
   }
 }

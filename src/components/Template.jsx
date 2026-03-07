@@ -66,55 +66,59 @@ export default function Template({ profile, isActive, onPrevious }) {
         <div>{profile.email}</div>
       </TemplateSection>
       {/* <!------- Education Section -------> */}
-      <TemplateSection
-        id='template-educational'
-        icon={GraduateIcon}
-        title={SECTIONS.EDUCATION}>
-        <ul>
-          {profile[USER_FIELDS.EDUCATION].map((edu) => (
-            <li key={edu.id}>
-              <div>{edu.degree}</div>
-              <div>{formatDate(edu.graduationdate)}</div>
-              <div>{edu.school}</div>
-              <div>{edu.citystate}</div>
-              <ul className='description'>
-                {edu.academicachievements &&
-                  edu.academicachievements
-                    .split('\n')
-                    .map(
-                      (entry, index) => entry && <li key={index}>{entry}</li>,
-                    )}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </TemplateSection>
+      {profile[USER_FIELDS.EDUCATION].length > 0 && (
+        <TemplateSection
+          id='template-educational'
+          icon={GraduateIcon}
+          title={SECTIONS.EDUCATION}>
+          <ul>
+            {profile[USER_FIELDS.EDUCATION].map((edu) => (
+              <li key={edu.id}>
+                <div>{edu.degree}</div>
+                <div>{formatDate(edu.graduationdate)}</div>
+                <div>{edu.school}</div>
+                <div>{edu.citystate}</div>
+                <ul className='description'>
+                  {edu.academicachievements &&
+                    edu.academicachievements
+                      .split('\n')
+                      .map(
+                        (entry, index) => entry && <li key={index}>{entry}</li>,
+                      )}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </TemplateSection>
+      )}
       {/* <!------- Work Experience Section -------> */}
-      <TemplateSection
-        id='template-work-exp'
-        icon={WorkIcon}
-        title={SECTIONS.WORK_EXPERIENCE}>
-        <ul>
-          {profile[USER_FIELDS.WORK_EXPERIENCE].map((job) => (
-            <li key={job.id}>
-              <div>{job.jobtitle}</div>
-              <div>
-                {formatDate(job.startdate) + ' - '}
-                {job.enddate ? <>{formatDate(job.enddate)}</> : 'Present'}
-              </div>
-              <div>{job.citystate}</div>
-              <ul className='description'>
-                {job.description &&
-                  job.description
-                    .split('\n')
-                    .map(
-                      (entry, index) => entry && <li key={index}>{entry}</li>,
-                    )}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </TemplateSection>
+      {profile[USER_FIELDS.WORK_EXPERIENCE].length > 0 && (
+        <TemplateSection
+          id='template-work-exp'
+          icon={WorkIcon}
+          title={SECTIONS.WORK_EXPERIENCE}>
+          <ul>
+            {profile[USER_FIELDS.WORK_EXPERIENCE].map((job) => (
+              <li key={job.id}>
+                <div>{job.jobtitle}</div>
+                <div>
+                  {formatDate(job.startdate) + ' - '}
+                  {job.enddate ? <>{formatDate(job.enddate)}</> : 'Present'}
+                </div>
+                <div>{job.citystate}</div>
+                <ul className='description'>
+                  {job.description &&
+                    job.description
+                      .split('\n')
+                      .map(
+                        (entry, index) => entry && <li key={index}>{entry}</li>,
+                      )}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </TemplateSection>
+      )}
       <Button
         type={INPUT_TYPES.BUTTON}
         name={BUTTON_LABELS.PREVIOUS}
