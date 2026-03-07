@@ -37,18 +37,19 @@ export default function Education({
   }
 
   function handlePreviewClick(e) {
-    const btn = e.target.closest(`.${CSS_CLASSES.EDU_PREVIEW_BTN}`);
-    let updatedList = previewList.filter((edu) => {
-      if (edu.id !== btn.id) {
-        return edu;
+    const selectedParent = e.target.closest(`.${CSS_CLASSES.EDU_PREVIEW_BTN}`);
+    let newActiveIndex;
+    const updatedList = [...previewList].filter((eduItem) => {
+      if (eduItem.id !== selectedParent.id) {
+        return eduItem;
       } else {
-        const newIndex = profile[USER_FIELDS.EDUCATION].findIndex(
-          (item) => edu.id === item.id,
+        newActiveIndex = profile[USER_FIELDS.EDUCATION].findIndex(
+          (profileItem) => eduItem.id === profileItem.id,
         );
-        setActiveEduIndex(newIndex);
       }
     });
-    if (eduProfile) updatedList = [...updatedList, eduProfile];
+    if (eduProfile) updatedList.push(eduProfile);
+    setActiveEduIndex(newActiveIndex);
     setPreviewList(updatedList);
   }
 
