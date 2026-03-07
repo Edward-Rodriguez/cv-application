@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Fieldset from './Fieldset';
 import Input from './Input';
 import Button from './Button';
@@ -13,7 +14,6 @@ import {
   BUTTON_LABELS,
   CSS_CLASSES,
 } from '../consts/input';
-import { useState } from 'react';
 
 export default function Education({
   title,
@@ -100,33 +100,30 @@ export default function Education({
           value={eduProfile.academicachievements ?? ''}
         />
         <div className={CSS_CLASSES.BTN_GRP}>
-          <div>
-            <Button
-              buttonType={INPUT_TYPES.SUBMIT}
-              name={BUTTON_LABELS.PREVIOUS}
-              onClick={onPrevious}
-              leftIcon={LeftArrowIcon}
-            />
-            <Button
-              buttonType={INPUT_TYPES.BUTTON}
-              name={BUTTON_LABELS.CLEAR}
-              onClick={() => onClear(USER_FIELDS.EDUCATION, activeEduIndex)}
-            />
-          </div>
-          <div>
-            <Button
-              buttonType={INPUT_TYPES.BUTTON}
-              name={BUTTON_LABELS.ADD_EDU}
-              onClick={handleAddEducation}
-              leftIcon={PlusIcon}
-            />
-            <Button
-              buttonType={INPUT_TYPES.SUBMIT}
-              name={BUTTON_LABELS.NEXT_STEP}
-              onClick={onClick}
-              rightIcon={RightArrowIcon}
-            />
-          </div>
+          <Button
+            buttonType={INPUT_TYPES.SUBMIT}
+            name={BUTTON_LABELS.PREVIOUS}
+            onClick={onPrevious}
+            leftIcon={LeftArrowIcon}
+          />
+          <Button
+            buttonType={INPUT_TYPES.BUTTON}
+            name={BUTTON_LABELS.CLEAR}
+            onClick={() => onClear(USER_FIELDS.EDUCATION, activeEduIndex)}
+          />
+
+          <Button
+            buttonType={INPUT_TYPES.BUTTON}
+            name={BUTTON_LABELS.ADD_EDU}
+            onClick={handleAddEducation}
+            leftIcon={PlusIcon}
+          />
+          <Button
+            buttonType={INPUT_TYPES.SUBMIT}
+            name={BUTTON_LABELS.NEXT_STEP}
+            onClick={onClick}
+            rightIcon={RightArrowIcon}
+          />
         </div>
       </Fieldset>
     </>

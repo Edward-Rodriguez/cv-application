@@ -26,7 +26,7 @@ export const BUTTON_LABELS = {
   PREVIOUS: 'Previous',
   VIEW_TEMPLATE: 'View Template',
   CLEAR: 'Clear',
-  ADD_EDU: 'Add Another Education',
+  ADD_EDU: 'Add Education',
   ADD_WORK_EXP: 'Add Another Work Experience',
 };
 

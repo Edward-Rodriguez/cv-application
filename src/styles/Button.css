@@ -6,13 +6,9 @@
 ========================= */
 .btn-grp {
   grid-column: span 2;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
   margin: 24px 0px 24px 0px;
-}
-
-.btn-grp div {
-  display: flex;
   column-gap: 8px;
 }
 
@@ -44,6 +40,7 @@ button[name='previous'] {
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
+  grid-column: 1;
 }
 
 button[name='previous']:hover {
@@ -52,6 +49,36 @@ button[name='previous']:hover {
 
 button[name='previous'] .btn-icon {
   margin-right: 8px;
+}
+
+/* =========================
+   Add-Another-Education / Clear Buttons
+========================= */
+button[name='addeducation'] {
+  display: flex;
+  align-items: center;
+  grid-column: 4;
+  justify-self: end;
+}
+
+button[name='clear'] {
+  grid-column: 2;
+}
+
+button[name='addeducation'] .btn-icon {
+  margin-right: 8px;
+  height: 18px;
+}
+
+button[name='clear'],
+button[name='addeducation'] {
+  transition: color 100ms;
+}
+
+button[name='clear']:hover,
+button[name='addeducation']:hover {
+  text-decoration: underline;
+  color: rgb(100, 100, 100);
 }
 
 /* =========================
@@ -74,6 +101,8 @@ button[name='nextstep'] {
   text-decoration: none;
   transition: background-color 100ms;
   outline: none;
+  grid-column: 5;
+  justify-self: end;
 }
 
 button[name='nextstep']:hover,
@@ -86,30 +115,6 @@ button[name='nextstep'] .btn-icon {
 }
 
 /* =========================
-   Add-Another-Education / Clear Buttons
-========================= */
-button[name='addanothereducation'] {
-  display: flex;
-  align-items: center;
-}
-
-button[name='addanothereducation'] .btn-icon {
-  margin-right: 8px;
-  height: 18px;
-}
-
-button[name='clear'],
-button[name='addanothereducation'] {
-  transition: color 100ms;
-}
-
-button[name='clear']:hover,
-button[name='addanothereducation']:hover {
-  text-decoration: underline;
-  color: rgb(100, 100, 100);
-}
-
-/* =========================
    Button Icons
 ========================= */
 .btn-icon {
@@ -118,4 +123,36 @@ button[name='addanothereducation']:hover {
 
 #personal-details .btn-grp {
   margin-top: 0px;
+}
+
+@media (max-width: 700px) {
+  .btn-grp {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    row-gap: 8px;
+  }
+
+  button[name='clear'] {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  button[name='addeducation'] {
+    width: 100%;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  button[name='previous'] {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+  }
+
+  button[name='nextstep'] {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: auto;
+  }
 }
