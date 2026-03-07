@@ -129,7 +129,6 @@ function App() {
             onClick={handleNextStep}
             onPrevious={handlePrevious}
             onClear={handleClearForm}
-            setProfile={setProfile}
             profile={profile}
             onChange={(e) =>
               handleProfileArrayChange(
@@ -144,6 +143,8 @@ function App() {
             title={SECTIONS.WORK_EXPERIENCE}
             id={normalizeString(SECTIONS.WORK_EXPERIENCE, '')}
             isActive={activeIndex === 2}
+            activeWorkIndex={activeWorkExpIndex}
+            setActiveWorkIndex={setactiveWorkExpIndex}
             onClick={handleNextStep}
             onPrevious={handlePrevious}
             onClear={handleClearForm}

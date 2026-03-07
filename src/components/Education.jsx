@@ -3,7 +3,7 @@ import Fieldset from './Fieldset';
 import Input from './Input';
 import Button from './Button';
 import TextArea from './TextArea';
-import EducationPreview from './EducationPreview';
+import ExperiencePreview from './ExperiencePreview';
 import RightArrowIcon from '../assets/right-icon-white.svg';
 import LeftArrowIcon from '../assets/left-icon-white.svg';
 import PlusIcon from '../assets/plus-icon.svg';
@@ -37,7 +37,7 @@ export default function Education({
   }
 
   function handlePreviewClick(e) {
-    const selectedParent = e.target.closest(`.${CSS_CLASSES.EDU_PREVIEW_BTN}`);
+    const selectedParent = e.target.closest(`.${CSS_CLASSES.EXP_PREVIEW_BTN}`);
     let newActiveIndex;
     const updatedList = [...previewList].filter((eduItem) => {
       if (eduItem.id !== selectedParent.id) {
@@ -59,9 +59,9 @@ export default function Education({
         <ul className={CSS_CLASSES.PREVIEW_LIST}>
           {previewList.map((edu) => (
             <li key={edu.id}>
-              <EducationPreview
+              <ExperiencePreview
                 id={edu.id}
-                education={edu}
+                category={edu}
                 type={INPUT_TYPES.BUTTON}
                 onClick={(e) => handlePreviewClick(e)}
               />

@@ -2,6 +2,7 @@ import Fieldset from './Fieldset';
 import Input from './Input';
 import Button from './Button';
 import TextArea from './TextArea';
+import ExperiencePreview from './ExperiencePreview';
 import RightArrowIcon from '../assets/right-icon-white.svg';
 import LeftArrowIcon from '../assets/left-icon-white.svg';
 import PlusIcon from '../assets/plus-icon.svg';
@@ -24,17 +25,49 @@ export default function WorkExperience({
   onPrevious,
   onClear,
   profile,
+  setActiveWorkIndex,
+  activeWorkIndex,
 }) {
-  const [activeWorkIndex, setActiveWorkIndex] = useState(0);
-
+  const [previewList, setPreviewList] = useState([]);
   const workProfile =
-    activeWorkIndex in profile[USER_FIELDS.WORK_EXPERIENCE]
-      ? profile[USER_FIELDS.WORK_EXPERIENCE][activeWorkIndex]
-      : '';
+    profile[USER_FIELDS.WORK_EXPERIENCE][activeWorkIndex] ?? '';
+  function handleAddWorkExperience() {
+    if (!workProfile) return;
+    setPreviewList([...previewList, workProfile]);
+    setActiveWorkIndex(profile[USER_FIELDS.WORK_EXPERIENCE].length);
+  }
 
+  function handlePreviewClick(e) {
+    const selectedParent = e.target.closest(`.${CSS_CLASSES.EXP_PREVIEW_BTN}`);
+    let newActiveIndex;
+    const updatedList = [...previewList].filter((workItem) => {
+      if (workItem.id !== selectedParent.id) {
+        return workItem;
+      } else {
+        newActiveIndex = profile[USER_FIELDS.WORK_EXPERIENCE].findIndex(
+          (profileItem) => workItem.id === profileItem.id,
+        );
+      }
+    });
+    if (workProfile) updatedList.push(workProfile);
+    setActiveWorkIndex(newActiveIndex);
+    setPreviewList(updatedList);
+  }
   return (
     <>
       <Fieldset title={title} id={id} isActive={isActive}>
+        <ul className={CSS_CLASSES.PREVIEW_LIST}>
+          {previewList.map((workItem) => (
+            <li key={workItem.id}>
+              <ExperiencePreview
+                id={workItem.id}
+                category={workItem}
+                type={INPUT_TYPES.BUTTON}
+                onClick={(e) => handlePreviewClick(e)}
+              />
+            </li>
+          ))}
+        </ul>
         <Input
           label={LABELS.JOB_TITLE}
           type={INPUT_TYPES.TEXT}
@@ -87,9 +120,9 @@ export default function WorkExperience({
             }
           />
           <Button
-            buttonType={INPUT_TYPES.SUBMIT}
+            buttonType={INPUT_TYPES.BUTTON}
             name={BUTTON_LABELS.ADD_WORK_EXP}
-            onClick={onClick}
+            onClick={handleAddWorkExperience}
             leftIcon={PlusIcon}
           />
           <Button

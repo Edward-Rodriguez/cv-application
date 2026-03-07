@@ -1,11 +1,11 @@
-.education-preview {
+.experience-preview {
   display: grid;
   grid-template-columns: 200px 1fr;
   justify-items: flex-start;
   gap: 6px;
 }
 
-.edu-preview-btn {
+.exp-preview-btn {
   width: 100%;
   border: none;
   cursor: pointer;
@@ -14,11 +14,11 @@
   background-color: transparent;
 }
 
-.edu-preview-btn:hover {
+.exp-preview-btn:hover {
   background-color: rgb(238, 238, 238);
 }
 
-.edu-preview-school {
+.exp-preview-title {
   font-weight: 700;
 }
 
