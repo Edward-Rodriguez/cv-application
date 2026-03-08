@@ -149,7 +149,7 @@ button[name='nextstep'] .btn-icon {
     grid-row: 1;
   }
 
-  button[name='previous'] {
+  button[name='previous']:not(.template button[name='previous']) {
     grid-column: 1;
     grid-row: 2;
     justify-content: center;

@@ -4,6 +4,7 @@ import '../styles/Template.css';
 import PersonIcon from '../assets/person-svgrepo-com.svg';
 import GraduateIcon from '../assets/graduate-cap-svgrepo-com.svg';
 import WorkIcon from '../assets/go-to-work-svgrepo-com.svg';
+import LeftArrowIcon from '../assets/left-icon-white.svg';
 import Button from './Button';
 import {
   CSS_CLASSES,
@@ -36,6 +37,13 @@ export default function Template({ profile, isActive, onPrevious }) {
     }
   }
 
+  function splitNonEmptyLines(text) {
+    return text
+      .split(/\r?\n|\r|\n/g)
+      .map((line) => line.trim())
+      .filter((line) => line !== '');
+  }
+
   return (
     <div
       style={{ display: isActive ? DISPLAY.GRID : DISPLAY.NONE }}
@@ -64,6 +72,18 @@ export default function Template({ profile, isActive, onPrevious }) {
         )}
         <div>{LABELS.EMAIL}</div>
         <div>{profile.email}</div>
+        {profile.linkedin && (
+          <>
+            <div>{LABELS.LINKEDIN}</div>
+            <div>{profile.linkedin}</div>
+          </>
+        )}
+        {profile.website && (
+          <>
+            <div>{LABELS.WEBSITE}</div>
+            <div>{profile.website}</div>
+          </>
+        )}
       </TemplateSection>
       {/* <!------- Education Section -------> */}
       {profile[USER_FIELDS.EDUCATION].length > 0 && (
@@ -80,11 +100,9 @@ export default function Template({ profile, isActive, onPrevious }) {
                 <div>{edu.citystate}</div>
                 <ul className='description'>
                   {edu.academicachievements &&
-                    edu.academicachievements
-                      .split('\n')
-                      .map(
-                        (entry, index) => entry && <li key={index}>{entry}</li>,
-                      )}
+                    splitNonEmptyLines(edu.academicachievements).map(
+                      (entry, index) => entry && <li key={index}>{entry}</li>,
+                    )}
                 </ul>
               </li>
             ))}
@@ -120,9 +138,10 @@ export default function Template({ profile, isActive, onPrevious }) {
         </TemplateSection>
       )}
       <Button
-        type={INPUT_TYPES.BUTTON}
+        buttonType={INPUT_TYPES.BUTTON}
         name={BUTTON_LABELS.PREVIOUS}
         onClick={onPrevious}
+        leftIcon={LeftArrowIcon}
       />
     </div>
   );

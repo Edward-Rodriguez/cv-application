@@ -22,3 +22,15 @@
   grid-column: span 1;
   padding-top: 16px;
 }
+
+.template-container button[name='previous'] {
+  margin-top: 24px;
+  justify-content: center;
+  border: none;
+}
+
+@media (max-width: 700px) {
+  .template-header {
+    font-size: 32px;
+  }
+}
