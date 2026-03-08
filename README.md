@@ -2,7 +2,7 @@
 
 Small application where users can input their information and generate a CV/résumé.
 
-**Live Demo:** `https://cv-application-d67.pages.dev/`
+**Live Demo:** [`https://cv-application-d67.pages.dev/`](https://cv-application-d67.pages.dev/)
 
 ## Features
 
