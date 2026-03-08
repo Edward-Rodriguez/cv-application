@@ -22,7 +22,7 @@
   font-family: 'Noto Sans', sans-serif;
   font-weight: 600;
   font-size: 14px;
-  padding: 8px 16px;
+  padding: 16px 24px;
   background-color: initial;
   color: grey;
   outline: 1px solid grey;
@@ -134,6 +134,10 @@ button[name='nextstep'] .btn-icon {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
     row-gap: 8px;
+  }
+
+  .btn-grp button {
+    padding: 16px 24px;
   }
 
   button[name='clear'] {

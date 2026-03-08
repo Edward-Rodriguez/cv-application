@@ -1,0 +1,31 @@
+.logo-container {
+  max-width: 800px;
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: -150px;
+  right: 0;
+  margin: auto;
+  padding: 0px 20px;
+}
+
+#logo {
+  height: 50px;
+}
+
+@media (max-width: 900px) {
+  .logo-container {
+    left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .logo-container {
+    top: 10px;
+    padding: 0px;
+  }
+
+  #logo {
+    height: 36px;
+  }
+}

@@ -1,5 +1,6 @@
 .template-container {
   max-width: 800px;
+  background-color: white;
   border-radius: 5px;
   box-shadow:
     rgba(0, 0, 0, 0.16) 0px 3px 6px,
@@ -11,7 +12,8 @@
 
 .template-header {
   width: 100%;
-  background-color: rgb(63, 101, 146);
+  /* background-color: rgb(63, 101, 146); */
+  background-color: #4c6cb5;
   color: aliceblue;
   font-size: 48px;
   text-align: left;
@@ -27,6 +29,12 @@
   margin-top: 24px;
   justify-content: center;
   border: none;
+  padding: 16px 24px;
+  background-color: rgb(175, 175, 175);
+}
+
+.template-container button[name='previous']:hover {
+  background-color: rgb(150, 150, 150);
 }
 
 @media (max-width: 700px) {

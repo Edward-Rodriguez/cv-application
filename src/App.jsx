@@ -7,6 +7,7 @@ import { SECTIONS } from './consts/headings';
 import { CSS_CLASSES, USER_FIELDS } from './consts/input';
 import WorkExperience from './components/WorkExperience';
 import Template from './components/Template';
+import Logo from './components/Logo';
 import {
   initPersonalDetails,
   initEduEntry,
@@ -106,6 +107,7 @@ function App() {
 
   return (
     <>
+      <Logo />
       <section className={CSS_CLASSES.FORM_SECTION}>
         <form>
           {/* <!------- Personal Information Section -------> */}
