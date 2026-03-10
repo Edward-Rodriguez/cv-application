@@ -16,7 +16,6 @@ import {
 
 function App() {
   const [profile, setProfile] = useState(initPersonalDetails);
-
   // state variable to control which section is displayed, each index represents a section, index is updated on submit button
   const [activeIndex, setActiveIndex] = useState(0);
   const [errors, setErrors] = useState({});
